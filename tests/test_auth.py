@@ -135,6 +135,42 @@ def test_disabled_account_cannot_login(client):
     assert login_response.status_code == 403
 
 
+def test_admin_can_reset_user_password(client):
+    admin_tokens = _login(client, ADMIN_EMAIL, ADMIN_PASSWORD).json()
+    headers = _auth_header(admin_tokens["access_token"])
+
+    created = client.post(
+        "/admin/users",
+        json={
+            "email": "reset.me@edutn6.tn",
+            "full_name": "Reset Me",
+            "password": "OriginalPass123!",
+            "role": "STUDENT",
+        },
+        headers=headers,
+    ).json()
+
+    reset_response = client.patch(f"/admin/users/{created['id']}/reset-password", headers=headers)
+    assert reset_response.status_code == 200
+    body = reset_response.json()
+    assert list(body.keys()) == ["temporary_password"]
+
+    temporary_password = body["temporary_password"]
+    assert len(temporary_password) == 14
+    assert any(c.isupper() for c in temporary_password)
+    assert any(c.islower() for c in temporary_password)
+    assert any(c.isdigit() for c in temporary_password)
+    assert any(c in "!@#$%^&*()-_=+" for c in temporary_password)
+
+    # L'ancien mot de passe ne fonctionne plus...
+    old_login = _login(client, "reset.me@edutn6.tn", "OriginalPass123!")
+    assert old_login.status_code == 401
+
+    # ...seul le mot de passe temporaire fonctionne desormais.
+    new_login = _login(client, "reset.me@edutn6.tn", temporary_password)
+    assert new_login.status_code == 200
+
+
 def test_refresh_token_rotation(client):
     tokens = _login(client, ADMIN_EMAIL, ADMIN_PASSWORD).json()
     old_refresh_token = tokens["refresh_token"]

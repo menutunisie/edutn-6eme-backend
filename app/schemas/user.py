@@ -35,5 +35,7 @@ class UserUpdate(BaseModel):
     role: UserRole | None = None
 
 
-class PasswordReset(BaseModel):
-    new_password: str = Field(min_length=8, max_length=128)
+class PasswordResetResponse(BaseModel):
+    """Mot de passe temporaire retourne UNE SEULE FOIS : jamais log, jamais stocke en clair."""
+
+    temporary_password: str

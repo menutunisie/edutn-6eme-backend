@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 from app.core.security import require_role
 from app.db.session import get_db
 from app.models.user import UserRole
-from app.schemas.user import PasswordReset, UserCreate, UserRead, UserUpdate
+from app.schemas.user import PasswordResetResponse, UserCreate, UserRead, UserUpdate
 from app.services import user_service
 
 router = APIRouter(
@@ -38,8 +38,7 @@ def update_user(user_id: uuid.UUID, payload: UserUpdate, db: Session = Depends(g
     return user_service.update_user(db, user_id, payload)
 
 
-@router.patch("/{user_id}/reset-password", response_model=UserRead)
-def reset_password(
-    user_id: uuid.UUID, payload: PasswordReset, db: Session = Depends(get_db)
-) -> UserRead:
-    return user_service.reset_password(db, user_id, payload.new_password)
+@router.patch("/{user_id}/reset-password", response_model=PasswordResetResponse)
+def reset_password(user_id: uuid.UUID, db: Session = Depends(get_db)) -> PasswordResetResponse:
+    temporary_password = user_service.reset_password(db, user_id)
+    return PasswordResetResponse(temporary_password=temporary_password)

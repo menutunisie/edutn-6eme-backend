@@ -3,7 +3,7 @@ from uuid import UUID
 from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
 
-from app.core.security import hash_password
+from app.core.security import generate_temporary_password, hash_password
 from app.models.user import User, UserRole
 from app.repositories import user_repository
 from app.schemas.user import UserCreate, UserUpdate
@@ -39,6 +39,13 @@ def update_user(db: Session, user_id: UUID, payload: UserUpdate) -> User:
     return user_repository.update(db, user, **fields)
 
 
-def reset_password(db: Session, user_id: UUID, new_password: str) -> User:
+def reset_password(db: Session, user_id: UUID) -> str:
+    """Genere un mot de passe temporaire, le hash et le stocke.
+
+    Retourne le mot de passe en clair : c'est la seule fois qu'il existe hors
+    de sa forme hashee (jamais log, jamais persiste en clair).
+    """
     user = get_user_or_404(db, user_id)
-    return user_repository.set_password(db, user, hash_password(new_password))
+    temporary_password = generate_temporary_password()
+    user_repository.set_password(db, user, hash_password(temporary_password))
+    return temporary_password

@@ -1,5 +1,6 @@
 import hashlib
 import secrets
+import string
 import uuid
 from datetime import datetime, timedelta, timezone
 
@@ -52,6 +53,30 @@ def decode_access_token(token: str) -> dict:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token invalide")
 
     return payload
+
+
+_PASSWORD_CATEGORIES = [
+    string.ascii_uppercase,
+    string.ascii_lowercase,
+    string.digits,
+    "!@#$%^&*()-_=+",
+]
+
+
+def generate_temporary_password(length: int = 14) -> str:
+    """Mot de passe aleatoire fort, avec au moins un caractere de chaque categorie
+    (majuscule, minuscule, chiffre, symbole)."""
+    if length < len(_PASSWORD_CATEGORIES):
+        raise ValueError(f"length doit etre >= {len(_PASSWORD_CATEGORIES)}")
+
+    all_chars = "".join(_PASSWORD_CATEGORIES)
+    password_chars = [secrets.choice(category) for category in _PASSWORD_CATEGORIES]
+    password_chars += [
+        secrets.choice(all_chars) for _ in range(length - len(_PASSWORD_CATEGORIES))
+    ]
+
+    secrets.SystemRandom().shuffle(password_chars)
+    return "".join(password_chars)
 
 
 def generate_refresh_token() -> str:
