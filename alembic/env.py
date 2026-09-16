@@ -7,8 +7,7 @@ from app.core.config import get_settings
 from app.db.base import Base
 
 # Import des modeles metier pour que Alembic les detecte en autogenerate.
-# A completer au fur et a mesure de leur creation (a partir de l'etape 3).
-# from app.models import user  # noqa: F401
+import app.models  # noqa: F401
 
 config = context.config
 

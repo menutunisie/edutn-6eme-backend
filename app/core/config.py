@@ -23,11 +23,15 @@ class Settings(BaseSettings):
     supabase_key: str = ""
     supabase_storage_bucket: str = "edutn6-resources"
 
-    # JWT (utilise a partir de l'etape 3 - authentification)
+    # JWT
     jwt_secret_key: str = "changeme"
     jwt_algorithm: str = "HS256"
-    access_token_expire_minutes: int = 30
-    refresh_token_expire_days: int = 7
+    access_token_expire_minutes: int = 1440  # 24h
+    refresh_token_expire_days: int = 90
+
+    # Seed du compte administrateur par defaut (cree au demarrage si aucun admin n'existe)
+    admin_default_email: str = ""
+    admin_default_password: str = ""
 
     @property
     def cors_origins_list(self) -> list[str]:
