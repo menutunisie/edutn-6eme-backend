@@ -1,3 +1,5 @@
+import uuid
+
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -25,4 +27,27 @@ def list_published_lessons(
             stmt = stmt.where(Term.code == term_code)
 
     stmt = stmt.order_by(Lesson.display_order)
+    return list(db.scalars(stmt))
+
+
+# --- Lecture admin (tous statuts) : structure uniquement, pas d'edition ----
+
+
+def list_subjects(db: Session) -> list[Subject]:
+    stmt = select(Subject).order_by(Subject.display_order)
+    return list(db.scalars(stmt))
+
+
+def list_terms(db: Session, *, subject_id: uuid.UUID) -> list[Term]:
+    stmt = select(Term).where(Term.subject_id == subject_id).order_by(Term.display_order)
+    return list(db.scalars(stmt))
+
+
+def list_units(db: Session, *, term_id: uuid.UUID) -> list[Unit]:
+    stmt = select(Unit).where(Unit.term_id == term_id).order_by(Unit.display_order)
+    return list(db.scalars(stmt))
+
+
+def list_lessons(db: Session, *, unit_id: uuid.UUID) -> list[Lesson]:
+    stmt = select(Lesson).where(Lesson.unit_id == unit_id).order_by(Lesson.display_order)
     return list(db.scalars(stmt))

@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import get_settings
 from app.core.seed import seed_admin_user
 from app.db.session import SessionLocal
-from app.routers import admin_users, auth, health, public_content
+from app.routers import admin_content, admin_users, auth, health, public_content
 
 settings = get_settings()
 
@@ -39,4 +39,5 @@ app.add_middleware(
 app.include_router(health.router)
 app.include_router(auth.router)
 app.include_router(admin_users.router)
+app.include_router(admin_content.router)
 app.include_router(public_content.router)

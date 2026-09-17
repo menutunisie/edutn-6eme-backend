@@ -31,23 +31,114 @@ depends_on: Union[str, Sequence[str], None] = None
 NAMESPACE = uuid.uuid5(uuid.NAMESPACE_DNS, "edutn6.tn")
 
 
-def _id(key: str) -> str:
-    # str() plutot que uuid.UUID : les tables reflechies via autoload_with
-    # perdent le type logique Uuid() du modele (reflection depuis le schema
-    # DB brut), une valeur str se bind correctement quel que soit le dialecte.
-    return str(uuid.uuid5(NAMESPACE, key))
+def _id(key: str) -> uuid.UUID:
+    return uuid.uuid5(NAMESPACE, key)
+
+
+def _content_tables() -> dict[str, sa.Table]:
+    """Tables minimales declarees a la main (PAS `autoload_with=bind`).
+
+    La reflection depuis le schema DB brut perd le type logique sa.Uuid()
+    des modeles : sur SQLite, ce type stocke un hex 32 caracteres SANS
+    tirets, alors qu'une reflection+insert d'un str(uuid.UUID) classique
+    ecrirait la forme AVEC tirets -- les deux se lisent correctement (le
+    parsing uuid.UUID() est tolerant aux deux formats), mais les
+    comparaisons WHERE ... = :valeur echouent ensuite silencieusement cote
+    ORM (le bind processor de l'ORM re-serialise en hex sans tirets pour
+    comparer). Declarer les colonnes id/FK en sa.Uuid() ici garantit que le
+    meme bind processor est utilise a l'insertion et a la lecture,
+    quel que soit le dialecte (SQLite en dev/tests, PostgreSQL en prod).
+    """
+    metadata = sa.MetaData()
+
+    school_levels = sa.Table(
+        "school_levels",
+        metadata,
+        sa.Column("id", sa.Uuid(), primary_key=True),
+        sa.Column("code", sa.String(50)),
+        sa.Column("name_fr", sa.String(255)),
+        sa.Column("name_ar", sa.String(255)),
+        sa.Column("display_order", sa.Integer()),
+    )
+    subjects = sa.Table(
+        "subjects",
+        metadata,
+        sa.Column("id", sa.Uuid(), primary_key=True),
+        sa.Column("school_level_id", sa.Uuid()),
+        sa.Column("code", sa.String(50)),
+        sa.Column("name_fr", sa.String(255)),
+        sa.Column("name_ar", sa.String(255)),
+        sa.Column("color", sa.String(7)),
+        sa.Column("display_order", sa.Integer()),
+    )
+    terms = sa.Table(
+        "terms",
+        metadata,
+        sa.Column("id", sa.Uuid(), primary_key=True),
+        sa.Column("subject_id", sa.Uuid()),
+        sa.Column("code", sa.String(20)),
+        sa.Column("name_fr", sa.String(255)),
+        sa.Column("name_ar", sa.String(255)),
+        sa.Column("display_order", sa.Integer()),
+    )
+    units = sa.Table(
+        "units",
+        metadata,
+        sa.Column("id", sa.Uuid(), primary_key=True),
+        sa.Column("term_id", sa.Uuid()),
+        sa.Column("title_fr", sa.String(255)),
+        sa.Column("title_ar", sa.String(255)),
+        sa.Column("status", sa.String(20)),
+        sa.Column("description", sa.Text()),
+        sa.Column("display_order", sa.Integer()),
+    )
+    lessons = sa.Table(
+        "lessons",
+        metadata,
+        sa.Column("id", sa.Uuid(), primary_key=True),
+        sa.Column("unit_id", sa.Uuid()),
+        sa.Column("week_id", sa.Uuid()),
+        sa.Column("title_fr", sa.String(255)),
+        sa.Column("title_ar", sa.String(255)),
+        sa.Column("status", sa.String(20)),
+        sa.Column("visibility", sa.String(20)),
+        sa.Column("description_short", sa.Text()),
+        sa.Column("objectives", sa.Text()),
+        sa.Column("competencies", sa.Text()),
+        sa.Column("prerequisites", sa.Text()),
+        sa.Column("is_demo", sa.Boolean()),
+        sa.Column("display_order", sa.Integer()),
+        sa.Column("author_id", sa.Uuid()),
+    )
+    resource_types = sa.Table(
+        "resource_types",
+        metadata,
+        sa.Column("id", sa.Uuid(), primary_key=True),
+        sa.Column("code", sa.String(50)),
+        sa.Column("name_fr", sa.String(255)),
+        sa.Column("name_ar", sa.String(255)),
+        sa.Column("display_order", sa.Integer()),
+    )
+
+    return dict(
+        school_levels=school_levels,
+        subjects=subjects,
+        terms=terms,
+        units=units,
+        lessons=lessons,
+        resource_types=resource_types,
+    )
 
 
 def upgrade() -> None:
     bind = op.get_bind()
-    metadata = sa.MetaData()
-
-    school_levels = sa.Table("school_levels", metadata, autoload_with=bind)
-    subjects = sa.Table("subjects", metadata, autoload_with=bind)
-    terms = sa.Table("terms", metadata, autoload_with=bind)
-    units = sa.Table("units", metadata, autoload_with=bind)
-    lessons = sa.Table("lessons", metadata, autoload_with=bind)
-    resource_types = sa.Table("resource_types", metadata, autoload_with=bind)
+    tables = _content_tables()
+    school_levels = tables["school_levels"]
+    subjects = tables["subjects"]
+    terms = tables["terms"]
+    units = tables["units"]
+    lessons = tables["lessons"]
+    resource_types = tables["resource_types"]
 
     # --- SchoolLevel -------------------------------------------------
     school_level_id = _id("school_level.6eme-base")
@@ -83,7 +174,7 @@ def upgrade() -> None:
         dict(key="PHYSICAL_EDUCATION", code="PHYSICAL_EDUCATION", name_fr="Éducation physique",
              name_ar="التربية البدنية", color="#F97316", display_order=7),
     ]
-    subject_ids: dict[str, str] = {}
+    subject_ids: dict[str, uuid.UUID] = {}
     for row in subject_rows:
         subject_id = _id(f"subject.{row['key']}")
         subject_ids[row["key"]] = subject_id
@@ -240,14 +331,13 @@ def upgrade() -> None:
 
 def downgrade() -> None:
     bind = op.get_bind()
-    metadata = sa.MetaData()
-
-    school_levels = sa.Table("school_levels", metadata, autoload_with=bind)
-    subjects = sa.Table("subjects", metadata, autoload_with=bind)
-    terms = sa.Table("terms", metadata, autoload_with=bind)
-    units = sa.Table("units", metadata, autoload_with=bind)
-    lessons = sa.Table("lessons", metadata, autoload_with=bind)
-    resource_types = sa.Table("resource_types", metadata, autoload_with=bind)
+    tables = _content_tables()
+    school_levels = tables["school_levels"]
+    subjects = tables["subjects"]
+    terms = tables["terms"]
+    units = tables["units"]
+    lessons = tables["lessons"]
+    resource_types = tables["resource_types"]
 
     science_unit_id = _id("unit.SCIENCE.T1.oeil-lumiere")
     math_unit_ids = [_id(f"unit.MATH.T1.axe-{i}") for i in range(1, 13)]
