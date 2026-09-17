@@ -1,0 +1,86 @@
+[
+  {
+    "title_fr": "Axe 1",
+    "title_ar": "أوظّف الجمع و الطّرح في مجموعة الأعداد العشريّة",
+    "description": "Leçon. Contenu basé sur le manuel officiel de mathématiques 6e année, page 4.",
+    "status": "a_verifier",
+    "display_order": 1
+  },
+  {
+    "title_fr": "Axe 2",
+    "title_ar": "أتصرّف في وحدات قيس المساحة",
+    "description": "Leçon. Contenu basé sur le manuel officiel de mathématiques 6e année, page 8.",
+    "status": "a_verifier",
+    "display_order": 2
+  },
+  {
+    "title_fr": "Axe 3",
+    "title_ar": "أوظّف الضّرب والقسمة في مجموعة الأعداد العشريّة",
+    "description": "Leçon. Contenu basé sur le manuel officiel de mathématiques 6e année, page 10.",
+    "status": "a_verifier",
+    "display_order": 3
+  },
+  {
+    "title_fr": "Axe 4",
+    "title_ar": "أوظّف التّعامد والتّوازي ومنصّف الزّاوية في البناءات الهندسيّة",
+    "description": "Leçon. Contenu basé sur le manuel officiel de mathématiques 6e année, page 14.",
+    "status": "a_verifier",
+    "display_order": 4
+  },
+  {
+    "title_fr": "Axe 5",
+    "title_ar": "أوظّف الجمع والطرح والضّرب على الأعداد التي تقيس الزّمن",
+    "description": "Leçon. Contenu basé sur le manuel officiel de mathématiques 6e année, page 16.",
+    "status": "a_verifier",
+    "display_order": 5
+  },
+  {
+    "title_fr": "Axe 6",
+    "title_ar": "أتدرّب على حلّ المسائل",
+    "description": "Séance d'exercices (أتدرّب على حلّ المسائل). Contenu basé sur le manuel officiel de mathématiques 6e année, page 19.",
+    "status": "a_verifier",
+    "display_order": 6
+  },
+  {
+    "title_fr": "Axe 7",
+    "title_ar": "أبني زوايا أقيسها بالدّرجة (120-90-60-30-15)",
+    "description": "Leçon. Contenu basé sur le manuel officiel de mathématiques 6e année, page 21.",
+    "status": "a_verifier",
+    "display_order": 7
+  },
+  {
+    "title_fr": "Axe 8",
+    "title_ar": "أبني مثلثا استنادا إلى أقيسة الأضلاع والزّوايا",
+    "description": "Leçon. Contenu basé sur le manuel officiel de mathématiques 6e année, page 24.",
+    "status": "a_verifier",
+    "display_order": 8
+  },
+  {
+    "title_fr": "Axe 9",
+    "title_ar": "أتعرّف شبه المنحرف وأرسمه",
+    "description": "Leçon. Contenu basé sur le manuel officiel de mathématiques 6e année, page 27.",
+    "status": "a_verifier",
+    "display_order": 9
+  },
+  {
+    "title_fr": "Axe 10",
+    "title_ar": "أتدرّب على حلّ المسائل",
+    "description": "Séance d'exercices (أتدرّب على حلّ المسائل). Contenu basé sur le manuel officiel de mathématiques 6e année, page 31.",
+    "status": "a_verifier",
+    "display_order": 10
+  },
+  {
+    "title_fr": "Axe 11",
+    "title_ar": "أوظّف مكتسباتي وأقيّمها",
+    "description": "Évaluation (أوظّف مكتسباتي وأقيّمها). Contenu basé sur le manuel officiel de mathématiques 6e année, page 33.",
+    "status": "a_verifier",
+    "display_order": 11
+  },
+  {
+    "title_fr": "Axe 12",
+    "title_ar": "أتسلّـى",
+    "description": "Activité récréative (أتسلّى). Contenu basé sur le manuel officiel de mathématiques 6e année, page 34.",
+    "status": "a_verifier",
+    "display_order": 12
+  }
+]
