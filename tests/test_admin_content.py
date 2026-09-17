@@ -1,6 +1,11 @@
 import os
 
+from app.db.session import SessionLocal
 from app.models.enums import ValidationStatus
+from app.models.school_level import SchoolLevel
+from app.models.subject import Subject
+from app.models.term import Term
+from app.models.unit import Unit
 from tests.test_public_content import _seed_minimal_content
 
 ADMIN_EMAIL = os.environ["ADMIN_DEFAULT_EMAIL"]
@@ -74,3 +79,56 @@ def test_admin_lessons_endpoint_exposes_non_published_statuses_unlike_public_end
     # Contrairement a /admin/lessons, /public/lessons ne l'expose jamais.
     public_response = client.get("/public/lessons").json()
     assert all(item["id"] != str(lesson.id) for item in public_response)
+
+
+def test_unit_with_null_title_fr_is_accepted_and_exposed_by_admin_api(client):
+    """title_fr est nullable (voir migration 67b1bc6b15ab) : cas reel pour
+    les Unit dont seul le titre arabe verifie est disponible pour l'instant
+    (ex. les 12 axes maths T1)."""
+    db = SessionLocal()
+    try:
+        school_level = SchoolLevel(
+            code="test-null-title-level", name_fr="Niveau test", name_ar="مستوى"
+        )
+        db.add(school_level)
+        db.flush()
+
+        subject = Subject(
+            school_level_id=school_level.id,
+            code="TEST_NULL_TITLE_SUBJECT",
+            name_fr="Matiere test",
+            name_ar="مادة",
+            color="#2563EB",
+        )
+        db.add(subject)
+        db.flush()
+
+        term = Term(
+            subject_id=subject.id, code="T1", name_fr="Premier trimestre", name_ar="الثلاثي الأول"
+        )
+        db.add(term)
+        db.flush()
+
+        # title_fr=None accepte sans erreur d'integrite : c'est le coeur du test.
+        unit = Unit(
+            term_id=term.id,
+            title_fr=None,
+            title_ar="عنوان تجريبي بالعربية فقط",
+            status=ValidationStatus.TO_REVIEW,
+        )
+        db.add(unit)
+        db.commit()
+        db.refresh(unit)
+        term_id = str(term.id)
+        unit_id = str(unit.id)
+    finally:
+        db.close()
+
+    headers = _admin_headers(client)
+    units = client.get("/admin/units", params={"term_id": term_id}, headers=headers).json()
+
+    assert len(units) == 1
+    assert units[0]["id"] == unit_id
+    assert units[0]["title_fr"] is None
+    assert units[0]["title_ar"] == "عنوان تجريبي بالعربية فقط"
+    assert units[0]["status"] == "a_verifier"

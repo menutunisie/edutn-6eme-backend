@@ -18,7 +18,7 @@ class Unit(Base):
     term_id: Mapped[uuid.UUID] = mapped_column(
         ForeignKey("terms.id", ondelete="CASCADE"), nullable=False, index=True
     )
-    title_fr: Mapped[str] = mapped_column(String(255), nullable=False)
+    title_fr: Mapped[str | None] = mapped_column(String(255), nullable=True)
     title_ar: Mapped[str | None] = mapped_column(String(255), nullable=True)
     status: Mapped[ValidationStatus] = mapped_column(
         sa_enum(ValidationStatus, "validation_status"),

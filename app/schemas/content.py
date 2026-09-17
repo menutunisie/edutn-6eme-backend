@@ -46,7 +46,7 @@ class UnitRead(BaseModel):
 
     id: uuid.UUID
     term_id: uuid.UUID
-    title_fr: str
+    title_fr: str | None
     title_ar: str | None
     status: ValidationStatus
     description: str | None
