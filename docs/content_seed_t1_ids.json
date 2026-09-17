@@ -1,0 +1,133 @@
+{
+  "_meta": {
+    "description": "IDs deterministes (uuid5, namespace fixe) crees par la migration alembic/versions/fcc3393abfea_seed_t1_structure_maths_eveil_.py. Ces ids seront IDENTIQUES dans toute base ou cette migration est appliquee (uuid5 = fonction pure du namespace + de la cle). Toutes les entites ci-dessous sont au statut 'a_verifier' : elles n'apparaissent pas sur GET /public/lessons tant qu'elles ne sont pas repassees a 'publie'.",
+    "migration_revision": "fcc3393abfea",
+    "generated_from": "alembic upgrade head (execution locale de validation, SQLite jetable)"
+  },
+  "mathematiques_axes": [
+    {
+      "id": "34222a25-6298-5e0b-bd47-86f6812177d5",
+      "title_fr": "Axe 1",
+      "display_order": 1
+    },
+    {
+      "id": "839eb87e-c0c9-5df7-b48e-4b8625d5d846",
+      "title_fr": "Axe 2",
+      "display_order": 2
+    },
+    {
+      "id": "4201d628-2205-56de-8328-04f3c6ce83a8",
+      "title_fr": "Axe 3",
+      "display_order": 3
+    },
+    {
+      "id": "dfdf694a-a599-5467-87a3-55ae15e89374",
+      "title_fr": "Axe 4",
+      "display_order": 4
+    },
+    {
+      "id": "c6f1f31f-1d73-5426-b598-6ef63eaa3a19",
+      "title_fr": "Axe 5",
+      "display_order": 5
+    },
+    {
+      "id": "610c8b57-a0e0-5c57-ab1d-179365ddc564",
+      "title_fr": "Axe 6",
+      "display_order": 6
+    },
+    {
+      "id": "5cf20dc2-3672-5017-801b-7f9e2c2a7a14",
+      "title_fr": "Axe 7",
+      "display_order": 7
+    },
+    {
+      "id": "d5aac4b7-46c3-537b-a771-44c829d40b72",
+      "title_fr": "Axe 8",
+      "display_order": 8
+    },
+    {
+      "id": "d423c692-aaba-5662-833b-aca8f12e38a2",
+      "title_fr": "Axe 9",
+      "display_order": 9
+    },
+    {
+      "id": "e437ec56-b3f4-54f1-850c-eb059a073058",
+      "title_fr": "Axe 10",
+      "display_order": 10
+    },
+    {
+      "id": "560ce7e2-7c63-5508-910b-7cbad149f019",
+      "title_fr": "Axe 11",
+      "display_order": 11
+    },
+    {
+      "id": "3365f582-4168-5366-b2eb-f571dcfd48dd",
+      "title_fr": "Axe 12",
+      "display_order": 12
+    }
+  ],
+  "eveil_scientifique_unit": {
+    "id": "2296c9b1-a516-56b4-9305-bf1e09d8426c",
+    "title_fr": "L'œil et la lumière",
+    "title_ar": "العين والضوء"
+  },
+  "eveil_scientifique_lessons": [
+    {
+      "id": "368b4fec-ddea-5cf8-93ae-45c623e2bad0",
+      "title_ar": "تركيب العين",
+      "display_order": 1
+    },
+    {
+      "id": "3a90eb05-4a63-527f-ac1a-e25931cb773f",
+      "title_ar": "أعضاء العين ووظائفها",
+      "display_order": 2
+    },
+    {
+      "id": "2f252f39-501d-58e6-b7fb-f26404a39818",
+      "title_ar": "انتشار الضوء",
+      "display_order": 3
+    },
+    {
+      "id": "ce337a5e-53a9-5e53-9e58-1bf5a3e6f53d",
+      "title_ar": "انعكاس الضوء",
+      "display_order": 4
+    },
+    {
+      "id": "dbb9848c-9e49-5c5c-a166-1cf966412b60",
+      "title_ar": "عيوب الرؤية",
+      "display_order": 5
+    },
+    {
+      "id": "b24dc6c6-6089-5bb9-8f96-2a7335465096",
+      "title_ar": "انكسار الضوء",
+      "display_order": 6
+    },
+    {
+      "id": "7af67823-8033-5339-9e42-3cbebe3bd057",
+      "title_ar": "انتثار الضوء",
+      "display_order": 7
+    },
+    {
+      "id": "dddec68f-0924-5f07-9ad8-9d1cae206d03",
+      "title_ar": "وسائل إصلاح عيوب الرؤية",
+      "display_order": 8
+    }
+  ],
+  "resource_types_rep": [
+    {
+      "id": "5f2b0012-0d44-577b-9cb3-ce99fa2fb0ee",
+      "code": "rep_remediation",
+      "name_fr": "Remédiation"
+    },
+    {
+      "id": "5a3791c9-bcb8-5ca2-b7d7-d6e729dae3d1",
+      "code": "rep_entrainement",
+      "name_fr": "Entraînement"
+    },
+    {
+      "id": "d8599445-6e3f-5eb8-af79-edc9d94c6044",
+      "code": "rep_perfectionnement",
+      "name_fr": "Perfectionnement"
+    }
+  ]
+}

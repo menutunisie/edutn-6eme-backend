@@ -18,6 +18,14 @@ from app.db.base import Base  # noqa: E402
 from app.db.session import engine  # noqa: E402
 from app.main import app  # noqa: E402
 
+# Certains modeles (Resource, ResourceType, Tag) ne sont importes par aucun
+# router/service actuel (relations definies via forward refs en string) :
+# sans cet import explicite, leurs tables n'apparaitraient pas dans
+# Base.metadata et create_all() les ignorerait silencieusement.
+# NB: `import app.models` (sans alias) rebinderait le nom `app` (deja lie a
+# l'instance FastAPI ci-dessus) vers le package racine -- d'ou l'alias.
+import app.models as _app_models  # noqa: E402, F401
+
 
 @pytest.fixture(autouse=True)
 def _reset_database():
