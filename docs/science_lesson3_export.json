@@ -1,0 +1,104 @@
+{
+  "id": "ee947b8a-bc52-5b4f-a834-51ff707ff9c2",
+  "unit_id": "2296c9b1-a516-56b4-9305-bf1e09d8426c",
+  "axis_id": "9b2fb734-d715-5998-b898-4f9df5ba0f87",
+  "week_id": null,
+  "title_fr": null,
+  "title_ar": "عيوب الرّؤية ووسائل الإصلاح",
+  "status": "a_verifier",
+  "visibility": "PUBLIC",
+  "display_order": 3,
+  "description_short": "Contenu basé sur le manuel officiel d'éveil scientifique 6e année (édition 2021), pages 21 à 24.",
+  "content_sections": [
+    {
+      "order": 1,
+      "phase_key": "mobilisation_acquis",
+      "title_ar": "أتعهّد مكتسباتي السّابقة",
+      "title_fr": null,
+      "body_ar": "أتأمّل الصّورة وأسمّي الأعضاء المشار إليها بالسّهام. أين تنطبع صورة الجسم داخل العين؟",
+      "body_fr": null,
+      "media_note": "Photo réelle d'un œil avec flèches pointant vers plusieurs organes à identifier. Page 21.",
+      "exercices_non_transcrits": null
+    },
+    {
+      "order": 2,
+      "phase_key": "observation",
+      "title_ar": "ألاحظ وأتساءل",
+      "title_fr": null,
+      "body_ar": "لاحظ أحمد في قسمه ظاهرة أثارت تساؤلاته: هناك تلميذ يضع على عينيه نظارة طبّية باستمرار خارج القسم وأثناء التعلّم. أساعد أحمد على شرح هذه الظّاهرة.",
+      "body_fr": null,
+      "media_note": null,
+      "exercices_non_transcrits": null
+    },
+    {
+      "order": 3,
+      "phase_key": "hypothese",
+      "title_ar": "أفترض",
+      "title_fr": null,
+      "body_ar": "يشكو التّلميذ نقصا في النّظر. عينا التّلميذ مصابتان بمرض. تزيد النّظارة التّلميذ قدرة على الرّؤية. يستعمل التّلميذ النّظارة للتّخفيف من شدّة الإضاءة الشّمسيّة. يستعمل التّلميذ النّظارة ليرى الكتابة بوضوح.",
+      "body_fr": null,
+      "media_note": null,
+      "exercices_non_transcrits": null
+    },
+    {
+      "order": 4,
+      "phase_key": "experimentation",
+      "title_ar": "أجرّب وأثبّت",
+      "title_fr": null,
+      "body_ar": "أ- أتأمّل الرّسم في كلّ وضعيّة وأكمل شفويّا بـ: أمام / خلف. ب- إذا علمت أنّ العدسة المقعّرة تبعد الأشعّة الضّوئيّة، وأنّ العدسة المحدّبة تقرّب الأشعّة، فما هو نوع العدسة التي تساعد على إصلاح: طول النّظر / قصر النّظر. ج- ألاحظ شكل العدسة (مقعّرة / محدّبة) ثمّ أذكر عيب الرّؤية في كلّ حالة.",
+      "body_fr": null,
+      "media_note": "2 schémas d'œil en coupe avec trajet lumineux, image formée avant/après la rétine selon la lentille utilisée. Page 22.",
+      "exercices_non_transcrits": null
+    },
+    {
+      "order": 5,
+      "phase_key": "conclusion",
+      "title_ar": "أستنتج",
+      "title_fr": null,
+      "body_ar": "تقوم الأوساط الشّفّافة بـ[جمع] الضّوء الذي ينفذ الى القرنيّة في نقطة واحدة لينطبع على [الشّبكيّة] فتتمّ [الرّؤية] بوضوح. للشّخص الذي يتمتّع بسلامة البصر القدرة على رؤية الأجسام [القريبة] و[البعيدة] بنفس النّسبة من الوضوح. في بعض الحالات تصبح عضلات العين عاجزة عن تغيير شكل العدسة تغييرا كافيا فيصاب الشّخص بـ[قصر] النّظر أو طول النّظر. يعدّل قصر النّظر بعدسة [محدّبة] ويعدّل [طول النّظر] بعدسة مقعّرة.",
+      "body_fr": null,
+      "media_note": null,
+      "exercices_non_transcrits": null
+    },
+    {
+      "order": 6,
+      "phase_key": "application",
+      "title_ar": "أطبّق وأوظّف",
+      "title_fr": null,
+      "body_ar": "أتأمّل الرّسوم وأذكر شفويّا عيب الرّؤية في كلّ حالة وأصف العدسة المعدّلة: 1- عين مصابة بـ[...] ويتمّ تعديل الرّؤية بعدسة [...]. 2- عين مصابة بـ[...] ويتمّ تعديل الرّؤية بعدسة [...]. ب- أكمل شفويّا بـ: مقرّبة، مبعّدة، تبعد، تقرّب. توجد العدسات على أشكال وأحجام متعدّدة وهي نوعان: عدسات [...] تنطبع صورة الجسم المرئيّ الواقع أمام الشّبكيّة حتّى ينطبع عليها، وعدسات [...] تبعد صورة الجسم المرئيّ الواقع خلف الشّبكيّة حتّى ينطبع عليها.",
+      "body_fr": null,
+      "media_note": "4 schémas d'yeux avec lentilles correctives (2 cas myopie, 2 cas hypermétropie). Page 23.",
+      "exercices_non_transcrits": null
+    },
+    {
+      "order": 7,
+      "phase_key": "evaluation",
+      "title_ar": "أقيّم تعلّمي الجديد",
+      "title_fr": null,
+      "body_ar": "أ- لاحظ خليل أنّ صديقه صفوان يقرّب الكتاب كثيرا إلى عينيه عند القراءة فنبّهه إلى أنّه يشكو [...] النّظر وأنّه في حاجة إلى نظّارة ذات عدستين [...]. ب- أصلح موقع صورة حرف «م» في الرّسم بالنّسبة لعين مصابة بطول النّظر بعد نقل الرّسم على كرّاسي.",
+      "body_fr": null,
+      "media_note": "Schéma d'œil avec trajet lumineux et position de l'image de la lettre م. Page 24.",
+      "exercices_non_transcrits": null
+    },
+    {
+      "order": 8,
+      "phase_key": "vocabulaire",
+      "title_ar": "معجمي في العلوم",
+      "title_fr": null,
+      "body_ar": "شبكة كلمات متقاطعة: (1) الجسم الزّجاجي في العين. (2) صفة العدسة المقرّبة للأشعّة الضّوئيّة. (3) فهي عدسة [...].",
+      "body_fr": null,
+      "media_note": null,
+      "exercices_non_transcrits": null
+    },
+    {
+      "order": 9,
+      "phase_key": "extension",
+      "title_ar": "أضيف إلى معلوماتي",
+      "title_fr": null,
+      "body_ar": "العين جهاز حسّي ينبغي المحافظة عليه. أبحث عن نصوص أو صور تبرز السّلوكات الوقائيّة التي يجب اتّخاذها للمحافظة على سلامة العين من الأضرار التي يمكن أن تلحق بها عن طريق الحوادث أو عدم احترام قواعد حفظ الصّحّة أو العدوى بأمراض كالرّمد.",
+      "body_fr": null,
+      "media_note": null,
+      "exercices_non_transcrits": null
+    }
+  ]
+}

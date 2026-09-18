@@ -529,3 +529,62 @@ def test_eight_math_lesson_units_each_have_exactly_one_lesson(client):
         detail_response = client.get(f"/admin/lessons/{lessons[0]['id']}", headers=headers)
         assert detail_response.status_code == 200
         assert detail_response.json()["content_sections"] is None
+
+
+def test_third_science_lesson_nine_sections_including_extension_phase(client):
+    """Couvre le cas de la 3e leçon pilote de sciences (عيوب الرّؤية ووسائل
+    الإصلاح, derniere leçon de l'axe جسم الإنسان) : 9 phases, dont une
+    phase "extension" (ouverture/prevention sante) qui n'existait dans
+    aucune autre leçon pilote -- confirme que phase_key est une chaine
+    libre, sans enum contraignant les valeurs possibles."""
+    nine_phase_sections = [
+        {
+            "order": i,
+            "phase_key": phase_key,
+            "title_ar": f"عنوان تجريبي {i}",
+            "title_fr": None,
+            "body_ar": f"نص تجريبي للمرحلة {i}",
+            "body_fr": None,
+            "media_note": "Schéma non numérisé." if i in (1, 4, 6, 7) else None,
+        }
+        for i, phase_key in enumerate(
+            [
+                "mobilisation_acquis",
+                "observation",
+                "hypothese",
+                "experimentation",
+                "conclusion",
+                "application",
+                "evaluation",
+                "vocabulaire",
+                "extension",
+            ],
+            start=1,
+        )
+    ]
+    lesson = _seed_lesson(
+        status=ValidationStatus.TO_REVIEW,
+        content_sections=nine_phase_sections,
+        title_ar="عيوب الرّؤية ووسائل الإصلاح",
+    )
+    headers = _admin_headers(client)
+
+    response = client.get(f"/admin/lessons/{lesson.id}", headers=headers)
+    assert response.status_code == 200
+    body = response.json()
+
+    assert len(body["content_sections"]) == 9
+    phase_keys = [s["phase_key"] for s in body["content_sections"]]
+    assert phase_keys == [
+        "mobilisation_acquis",
+        "observation",
+        "hypothese",
+        "experimentation",
+        "conclusion",
+        "application",
+        "evaluation",
+        "vocabulaire",
+        "extension",
+    ]
+    with_media = [s["order"] for s in body["content_sections"] if s["media_note"]]
+    assert with_media == [1, 4, 6, 7]
