@@ -20,6 +20,7 @@ class LessonContentSection(BaseModel):
     body_ar: str
     body_fr: str | None = None
     media_note: str | None = None
+    exercices_non_transcrits: str | None = None
 
 
 class LessonPublicRead(BaseModel):

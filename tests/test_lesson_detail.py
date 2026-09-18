@@ -378,3 +378,66 @@ def test_sixth_lesson_eight_sections_media_notes_on_mobilisation_experimentation
     ]
     with_media = [s["order"] for s in body["content_sections"] if s["media_note"]]
     assert with_media == [1, 4, 6]
+
+
+def test_math_lesson_content_sections_include_exercices_non_transcrits(client):
+    """Couvre le format "structure-representatif" des leçons de
+    mathematiques (1re leçon pilote, Axe 1) : chaque phase peut porter un
+    champ optionnel exercices_non_transcrits (resume des exercices non
+    transcrits integralement), absent des leçons de sciences."""
+    math_sections = [
+        {
+            "order": 1,
+            "phase_key": "mobilisation_acquis",
+            "title_ar": "أستحضر",
+            "title_fr": None,
+            "body_ar": "نص تجريبي",
+            "body_fr": None,
+            "media_note": "Tableau non numérisé.",
+            "exercices_non_transcrits": None,
+        },
+        {
+            "order": 2,
+            "phase_key": "evaluation_acquis",
+            "title_ar": "أقيّم مكتسباتي",
+            "title_fr": None,
+            "body_ar": "نص تجريبي آخر",
+            "body_fr": None,
+            "media_note": None,
+            "exercices_non_transcrits": "Exercices 4 à 7 (pages 5-6), résumé de leur contenu.",
+        },
+    ]
+    lesson = _seed_lesson(
+        status=ValidationStatus.TO_REVIEW,
+        content_sections=math_sections,
+        title_ar="أوظّف الجمع و الطّرح في مجموعة الأعداد العشريّة",
+    )
+    headers = _admin_headers(client)
+
+    response = client.get(f"/admin/lessons/{lesson.id}", headers=headers)
+    assert response.status_code == 200
+    body = response.json()
+
+    assert len(body["content_sections"]) == 2
+    assert body["content_sections"][0]["exercices_non_transcrits"] is None
+    assert (
+        body["content_sections"][1]["exercices_non_transcrits"]
+        == "Exercices 4 à 7 (pages 5-6), résumé de leur contenu."
+    )
+
+    # Endpoint public : le champ doit aussi transiter une fois la leçon publiée.
+    db = SessionLocal()
+    try:
+        db_lesson = db.get(Lesson, lesson.id)
+        db_lesson.status = ValidationStatus.PUBLISHED
+        db.commit()
+    finally:
+        db.close()
+
+    public_response = client.get(f"/public/lessons/{lesson.id}")
+    assert public_response.status_code == 200
+    public_body = public_response.json()
+    assert (
+        public_body["content_sections"][1]["exercices_non_transcrits"]
+        == "Exercices 4 à 7 (pages 5-6), résumé de leur contenu."
+    )
