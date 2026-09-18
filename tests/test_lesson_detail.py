@@ -265,3 +265,58 @@ def test_lesson_with_seven_sections_and_no_vocabulaire_phase(client):
         "application",
         "evaluation",
     ]
+
+
+def test_fifth_lesson_eight_sections_media_notes_on_experimentation_and_application(client):
+    """Couvre le cas de la 5e leçon pilote (انعكاس الضّوء, 2e leçon de l'axe
+    الضّوء) : 8 phases (retour de "vocabulaire"), avec media_note seulement
+    sur "experimentation" (ordre 4) et "application" (ordre 6)."""
+    eight_phase_sections = [
+        {
+            "order": i,
+            "phase_key": phase_key,
+            "title_ar": f"عنوان تجريبي {i}",
+            "title_fr": None,
+            "body_ar": f"نص تجريبي للمرحلة {i}",
+            "body_fr": None,
+            "media_note": "Schéma non numérisé." if i in (4, 6) else None,
+        }
+        for i, phase_key in enumerate(
+            [
+                "mobilisation_acquis",
+                "observation",
+                "hypothese",
+                "experimentation",
+                "conclusion",
+                "application",
+                "evaluation",
+                "vocabulaire",
+            ],
+            start=1,
+        )
+    ]
+    lesson = _seed_lesson(
+        status=ValidationStatus.TO_REVIEW,
+        content_sections=eight_phase_sections,
+        title_ar="انعكاس الضّوء",
+    )
+    headers = _admin_headers(client)
+
+    response = client.get(f"/admin/lessons/{lesson.id}", headers=headers)
+    assert response.status_code == 200
+    body = response.json()
+
+    assert len(body["content_sections"]) == 8
+    phase_keys = [s["phase_key"] for s in body["content_sections"]]
+    assert phase_keys == [
+        "mobilisation_acquis",
+        "observation",
+        "hypothese",
+        "experimentation",
+        "conclusion",
+        "application",
+        "evaluation",
+        "vocabulaire",
+    ]
+    with_media = [s["order"] for s in body["content_sections"] if s["media_note"]]
+    assert with_media == [4, 6]

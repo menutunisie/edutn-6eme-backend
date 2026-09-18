@@ -1,0 +1,86 @@
+{
+  "id": "8678a886-607f-5ad1-9af6-efdbacfea133",
+  "unit_id": "2296c9b1-a516-56b4-9305-bf1e09d8426c",
+  "axis_id": "c4bb4058-e593-5b10-85a7-c40ca93d8255",
+  "week_id": null,
+  "title_fr": null,
+  "title_ar": "انعكاس الضّوء",
+  "status": "a_verifier",
+  "visibility": "PUBLIC",
+  "display_order": 2,
+  "description_short": "Contenu basé sur le manuel officiel d'éveil scientifique 6e année (édition 2021), pages 18 à 20.",
+  "content_sections": [
+    {
+      "order": 1,
+      "phase_key": "mobilisation_acquis",
+      "title_ar": "أتعهّد مكتسباتي السّابقة",
+      "title_fr": null,
+      "body_ar": "أختير ما يسمح بمرور الضّوء من بين المقترحات التّالية: البلّور المطروق ـ الزّجاج ـ الجدار ـ الهواء ـ الماء في حوض معدّ للسّباحة ـ الكتاب ـ شاشة العرض بقاعة عرض أفلام ـ شاشة حاسوب ـ البلّور الأماميّ للسّيّارات ـ الأرض.",
+      "body_fr": null,
+      "media_note": null
+    },
+    {
+      "order": 2,
+      "phase_key": "observation",
+      "title_ar": "ألاحظ وأتساءل",
+      "title_fr": null,
+      "body_ar": "أستعمل مرآة لتوجيه أشعّة ضوئيّة صادرة عن الشّمس أو مكشاف كهربائيّ نحو جسم في موقع ظليل. ماذا يحدث؟ كيف أفسّر ما حدث؟",
+      "body_fr": null,
+      "media_note": null
+    },
+    {
+      "order": 3,
+      "phase_key": "hypothese",
+      "title_ar": "أفترض",
+      "title_fr": null,
+      "body_ar": "أختار من الافتراضات التّالية ما يمكن التّثبّت منه: عكست المرآة الأشعّة الضّوئيّة نحو الجسم / أصدرت المرآة أشعّة نحو الجسم / وجّه الجسم أشعّة نحو المرآة.",
+      "body_fr": null,
+      "media_note": null
+    },
+    {
+      "order": 4,
+      "phase_key": "experimentation",
+      "title_ar": "أجرّب وأثبّت",
+      "title_fr": null,
+      "body_ar": "أشعل مكشافا كهربائيّا وأوجّهه نحو مرآة مستوية من خلال ثقب بورق مقوّى فأشاهد بفضل غبار الطّباشير الذي أنثره ارتداد الأشعّة الضّوئيّة الواردة عند اصطدامها بالمرآة المصقولة.",
+      "body_fr": null,
+      "media_note": "Illustration : lampe torche dirigée à travers un trou dans un carton vers un miroir plan. Page 19."
+    },
+    {
+      "order": 5,
+      "phase_key": "conclusion",
+      "title_ar": "أستنتج",
+      "title_fr": null,
+      "body_ar": "انعكاس الضّوء هو [تغيّر] الضّوء وفق اتّجاه [آخر] عند وروده [على سطح عاكس].",
+      "body_fr": null,
+      "media_note": null
+    },
+    {
+      "order": 6,
+      "phase_key": "application",
+      "title_ar": "أطبّق وأوظّف",
+      "title_fr": null,
+      "body_ar": "أ- أرسم على كرّاسي بعد نقل الرّسوم التّالية الشّعاع الضّوئيّ المنعكس أو الوارد في كلّ حالة (4 حالات avec مرآة مستوية). ب- أكمل شفويّا بما يناسب: تنتثر، الشّمس، مصقول، عاتم، مستقيمة، مصدر، انتشار، انعكاس، تنحرف. عندما تسقط الأشعّة الواردة من [...] ضوئيّ على جسم [...] فإنّها تنحرف متّبعة خطوطا [...] وفي اتّجاه محدّد وتسمّى هذه الظّاهرة [...] الضّوء. ج- فيمَ تستعمل المرايا المثبّتة على زجاج السّيّارة الأمامي وعلى جانبيها؟",
+      "body_fr": null,
+      "media_note": "4 schémas de rayons incidents/réfléchis sur un miroir plan. Page 19."
+    },
+    {
+      "order": 7,
+      "phase_key": "evaluation",
+      "title_ar": "أقيّم تعلّمي الجديد",
+      "title_fr": null,
+      "body_ar": "لماذا يغيّر السّائق أحيانا اتّجاه المرآة العاكسة المثبّتة على الزّجاج الأمامي للسّيّارة ليلا؟",
+      "body_fr": null,
+      "media_note": null
+    },
+    {
+      "order": 8,
+      "phase_key": "vocabulaire",
+      "title_ar": "معجمي في العلوم",
+      "title_fr": null,
+      "body_ar": "أنقل الشّبكة وأعمّرها للحصول على مفردات علميّة تتّصل بظاهرة انعكاس الضّوء: (1) صفة للأشعّة الضّوئيّة المرتدّة عند ورودها على أجسام صقيلة. (2) شكل من أشكال ارتداد الضّوء. (3) صفة للأشعّة المنبعثة من مصدر ضوئي.",
+      "body_fr": null,
+      "media_note": null
+    }
+  ]
+}
