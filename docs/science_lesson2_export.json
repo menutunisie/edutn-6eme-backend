@@ -1,0 +1,92 @@
+{
+  "_meta": {
+    "description": "IDs deterministes (uuid5) crees par la migration alembic 0ea91fd9d0c9.",
+    "migration_revision": "0ea91fd9d0c9"
+  },
+  "lesson": {
+    "id": "3588d145-8a31-56ed-b24a-fbd5749ed79d",
+    "unit_id": "2296c9b1-a516-56b4-9305-bf1e09d8426c",
+    "axis_id": "9b2fb734-d715-5998-b898-4f9df5ba0f87",
+    "week_id": null,
+    "title_fr": null,
+    "title_ar": "العين والرّؤية",
+    "status": "a_verifier",
+    "visibility": "PUBLIC",
+    "display_order": 2,
+    "description_short": "Contenu basé sur le manuel officiel d'éveil scientifique 6e année (édition 2021), pages 14 à 17.",
+    "content_sections": [
+      {
+        "order": 1,
+        "phase_key": "mobilisation_acquis",
+        "title_ar": "أتعهّد مكتسباتي السّابقة",
+        "title_fr": null,
+        "body_ar": "أنسخ الجدول وأعمّره بتصنيف ما يلي حسب كونها أعضاء داخلية أو خارجية للعين: الحاجب، العصب البصري، الشّبكيّة، الجفنان، الأهداب.",
+        "body_fr": null,
+        "media_note": null
+      },
+      {
+        "order": 2,
+        "phase_key": "observation",
+        "title_ar": "ألاحظ وأتساءل",
+        "title_fr": null,
+        "body_ar": "شخص سليم العينين يستعمل عصا بيضاء عند تنقّله في مركّب تجاري. لماذا يستعمل هذا الشّخص العصا؟",
+        "body_fr": null,
+        "media_note": null
+      },
+      {
+        "order": 3,
+        "phase_key": "hypothese",
+        "title_ar": "أفترض",
+        "title_fr": null,
+        "body_ar": "العين كافية للإبصار. تتدخّل أعضاء أخرى في الإبصار. المركّب التّجاري مظلم.",
+        "body_fr": null,
+        "media_note": null
+      },
+      {
+        "order": 4,
+        "phase_key": "experimentation",
+        "title_ar": "أجرّب وأثبت",
+        "title_fr": null,
+        "body_ar": "أ- أجسّم عمليّة الرّؤية باعتماد الوسائل التّالية: شمعة، عدسة (قرص بغشاء أسود وثقب صغير)، شاشة. ب- أنقل الجدول على كرّاسي وأعمّره بذكر مكوّنات العين، بمقارنتها بآلة التّصوير.",
+        "body_fr": null,
+        "media_note": "Photo d'un œil en coupe + appareil photo argentique (Polaroid), avec tableau comparatif : آلة التصوير (الغرفة السوداء، العدسة، المنظّم الضّوئي، الفيلم) ↔ العين (à compléter par l'élève : القزحيّة، الشّبكيّة...). Page 15."
+      },
+      {
+        "order": 5,
+        "phase_key": "conclusion",
+        "title_ar": "أستنتج",
+        "title_fr": null,
+        "body_ar": "تخترق الأشعّة الضّوئيّة [القرنيّة والعدسة] للعين فترتسم صورة الجسم على [الشّبكيّة] وتحدث إشارات (سيالة عصبيّة) ينقلها [العصب البصري] إلى المخّ الذي يتولّى تحليلها وتأويلها.",
+        "body_fr": null,
+        "media_note": null
+      },
+      {
+        "order": 6,
+        "phase_key": "application",
+        "title_ar": "أطبّق وأوظّف",
+        "title_fr": null,
+        "body_ar": "أ- أنطلق من الرّسم لأشرح عمليّة الرّؤية. ب- أرتّب الأحداث التّالية لأتعرّف كيف تتمّ عمليّة الرّؤية: تنبعث الأشعّة الضّوئيّة من الجسم المضيء، فتخترق الأشعّة الضّوئيّة الأوساط الشّفافة للعين، فتنطبع صورة الجسم مقلوبة على الشّبكيّة، فينقل العصب البصري صورة الجسم إلى المخّ فيحلّلها ويؤوّلها.",
+        "body_fr": null,
+        "media_note": "Schéma du cerveau relié à l'œil par le nerf optique (المخّ، العين، العصب البصري), page 16."
+      },
+      {
+        "order": 7,
+        "phase_key": "evaluation",
+        "title_ar": "أقيّم تعلّمي الجديد",
+        "title_fr": null,
+        "body_ar": "أصلح الخطأ عند وجوده: الشّبكيّة: تنطبع عليها الأجسام في وضعها الطّبيعي (خطأ، الصّورة مقلوبة). العصب البصري: ينقل الإشارات إلى المخّ (صحيح). المخّ: يتمّ فيه تحليل الإشارات وتأويلها (صحيح). الحدقة: تمنع الأشعّة الضّوئيّة من المرور إلى داخل العين (خطأ، تسمح بمرورها). الجسم البلّوري: يفرّق الأشعّة الضّوئيّة التي تلتقطها العين (خطأ، يجمّعها).",
+        "body_fr": null,
+        "media_note": null
+      },
+      {
+        "order": 8,
+        "phase_key": "vocabulaire",
+        "title_ar": "معجمي في العلوم",
+        "title_fr": null,
+        "body_ar": "شبكة كلمات متقاطعة: (1) تتكيّف حسب كميّة النّور، من أنا؟ (2) يحمي العين من تسرّب العرق، من أنا؟ (3) حاسّة الإبصار، ما اسمها؟",
+        "body_fr": null,
+        "media_note": null
+      }
+    ]
+  }
+}

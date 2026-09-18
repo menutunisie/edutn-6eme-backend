@@ -33,6 +33,33 @@ SAMPLE_SECTIONS = [
     },
 ]
 
+# Reproduit la forme de la 2e leçon pilote (العين والرّؤية, 8 phases, dont
+# certaines sans media_note) sans dupliquer le texte reel du manuel ici.
+SAMPLE_SECTIONS_SECOND_LESSON = [
+    {
+        "order": i,
+        "phase_key": phase_key,
+        "title_ar": f"عنوان تجريبي {i}",
+        "title_fr": None,
+        "body_ar": f"نص تجريبي للمرحلة {i}",
+        "body_fr": None,
+        "media_note": "Schéma non numérisé." if i in (4, 6) else None,
+    }
+    for i, phase_key in enumerate(
+        [
+            "mobilisation_acquis",
+            "observation",
+            "hypothese",
+            "experimentation",
+            "conclusion",
+            "application",
+            "evaluation",
+            "vocabulaire",
+        ],
+        start=1,
+    )
+]
+
 
 def _admin_headers(client) -> dict:
     tokens = client.post(
@@ -41,7 +68,9 @@ def _admin_headers(client) -> dict:
     return {"Authorization": f"Bearer {tokens['access_token']}"}
 
 
-def _seed_lesson(*, status: ValidationStatus, content_sections: list | None) -> Lesson:
+def _seed_lesson(
+    *, status: ValidationStatus, content_sections: list | None, title_ar: str = "درس تجريبي"
+) -> Lesson:
     db = SessionLocal()
     try:
         school_level = SchoolLevel(
@@ -70,7 +99,7 @@ def _seed_lesson(*, status: ValidationStatus, content_sections: list | None) -> 
 
         lesson = Lesson(
             unit_id=unit.id,
-            title_ar="درس تجريبي",
+            title_ar=title_ar,
             status=status,
             content_sections=content_sections,
         )
@@ -136,3 +165,50 @@ def test_public_lesson_detail_returns_content_sections_when_published(client):
 def test_public_lesson_detail_unknown_id_returns_404(client):
     response = client.get(f"/public/lessons/{uuid.uuid4()}")
     assert response.status_code == 404
+
+
+def test_second_lesson_content_sections_independent_from_first(client):
+    """Couvre le cas de la 2e leçon pilote (العين والرّؤية) : deux Lesson
+    distinctes, chacune avec ses 8 phases propres, ne doivent jamais se
+    melanger ni s'ecraser l'une l'autre."""
+    first_lesson = _seed_lesson(
+        status=ValidationStatus.TO_REVIEW,
+        content_sections=SAMPLE_SECTIONS,
+        title_ar="تركيبة العين",
+    )
+    second_lesson = _seed_lesson(
+        status=ValidationStatus.TO_REVIEW,
+        content_sections=SAMPLE_SECTIONS_SECOND_LESSON,
+        title_ar="العين والرّؤية",
+    )
+    headers = _admin_headers(client)
+
+    first_response = client.get(f"/admin/lessons/{first_lesson.id}", headers=headers)
+    second_response = client.get(f"/admin/lessons/{second_lesson.id}", headers=headers)
+
+    assert first_response.status_code == 200
+    assert second_response.status_code == 200
+
+    first_body = first_response.json()
+    second_body = second_response.json()
+
+    assert len(first_body["content_sections"]) == 2
+    assert len(second_body["content_sections"]) == 8
+
+    second_phase_keys = [s["phase_key"] for s in second_body["content_sections"]]
+    assert second_phase_keys == [
+        "mobilisation_acquis",
+        "observation",
+        "hypothese",
+        "experimentation",
+        "conclusion",
+        "application",
+        "evaluation",
+        "vocabulaire",
+    ]
+    # Seules les phases 4 et 6 ont un media_note dans ce jeu de donnees.
+    with_media = [s["order"] for s in second_body["content_sections"] if s["media_note"]]
+    assert with_media == [4, 6]
+
+    # Aucune fuite de contenu entre les deux leçons.
+    assert first_body["content_sections"] != second_body["content_sections"]
