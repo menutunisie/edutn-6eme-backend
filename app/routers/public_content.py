@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 
 from app.db.session import get_db
 from app.repositories import content_repository
-from app.schemas.content import LessonPublicRead
+from app.schemas.content import LessonPublicDetailRead, LessonPublicRead
 
 router = APIRouter(prefix="/public", tags=["public-content"])
 
@@ -23,3 +23,10 @@ def list_public_lessons(
     return content_repository.list_published_lessons(
         db, subject_code=subject_code, term_code=term_code, axis_id=axis_id
     )
+
+
+@router.get("/lessons/{lesson_id}", response_model=LessonPublicDetailRead)
+def get_public_lesson(lesson_id: uuid.UUID, db: Session = Depends(get_db)) -> LessonPublicDetailRead:
+    """404 si la Lesson n'existe pas OU si elle n'est pas PUBLISHED (ne
+    revele jamais l'existence de contenu non publie)."""
+    return content_repository.get_published_lesson_or_404(db, lesson_id)

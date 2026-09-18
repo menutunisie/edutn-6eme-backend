@@ -5,9 +5,27 @@ from pydantic import BaseModel, ConfigDict, Field
 from app.models.enums import ValidationStatus, Visibility
 
 
+class LessonContentSection(BaseModel):
+    """Une phase pedagogique d'une Lesson (situation de depart, observation,
+    hypothese...). phase_key est un identifiant technique stable, jamais le
+    libelle arabe affiche. media_note decrit un schema/image du manuel pas
+    encore numerise -- jamais une vraie image."""
+
+    model_config = ConfigDict(from_attributes=True)
+
+    order: int
+    phase_key: str
+    title_ar: str
+    title_fr: str | None = None
+    body_ar: str
+    body_fr: str | None = None
+    media_note: str | None = None
+
+
 class LessonPublicRead(BaseModel):
-    """Lecture publique d'une Lesson : uniquement les Lesson PUBLISHED sont
-    jamais servies via ce schema (voir content_repository.list_published_lessons)."""
+    """Lecture publique (liste) d'une Lesson : uniquement les Lesson
+    PUBLISHED sont jamais servies via ce schema (voir
+    content_repository.list_published_lessons)."""
 
     model_config = ConfigDict(from_attributes=True)
 
@@ -16,6 +34,14 @@ class LessonPublicRead(BaseModel):
     title_fr: str | None
     title_ar: str | None
     display_order: int
+
+
+class LessonPublicDetailRead(LessonPublicRead):
+    """Lecture publique detaillee (GET /public/lessons/{id}) : idem
+    LessonPublicRead + le contenu structure. Toujours filtre PUBLISHED."""
+
+    description_short: str | None
+    content_sections: list[LessonContentSection] | None
 
 
 class SubjectRead(BaseModel):
@@ -99,3 +125,12 @@ class LessonRead(BaseModel):
     status: ValidationStatus
     visibility: Visibility
     display_order: int
+
+
+class LessonDetailRead(LessonRead):
+    """Lecture admin detaillee (GET /admin/lessons/{id}) : idem LessonRead +
+    le contenu structure. La liste (GET /admin/lessons) reste volontairement
+    allegee (sans content_sections) pour ne pas alourdir chaque ligne."""
+
+    description_short: str | None
+    content_sections: list[LessonContentSection] | None

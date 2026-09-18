@@ -68,6 +68,23 @@ def list_lessons(
     return list(db.scalars(stmt))
 
 
+def get_lesson_or_404(db: Session, lesson_id: uuid.UUID) -> Lesson:
+    lesson = db.get(Lesson, lesson_id)
+    if lesson is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Leçon introuvable")
+    return lesson
+
+
+def get_published_lesson_or_404(db: Session, lesson_id: uuid.UUID) -> Lesson:
+    """Reservee a l'endpoint public : un id valide mais non PUBLISHED donne
+    le meme 404 qu'un id inexistant (ne revele pas l'existence de contenu
+    non publie)."""
+    lesson = db.get(Lesson, lesson_id)
+    if lesson is None or lesson.status != ValidationStatus.PUBLISHED:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Leçon introuvable")
+    return lesson
+
+
 # --- Axis : seul niveau de la hierarchie de contenu avec ecriture admin ----
 # (POST/PATCH), demande explicitement pour cette etape. Subject/Term/Unit/
 # Lesson restent lecture seule tant que l'admin CRUD complet n'est pas

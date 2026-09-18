@@ -1,8 +1,11 @@
 import uuid
 from datetime import datetime
+from typing import Any
 
 from sqlalchemy import Boolean, DateTime, ForeignKey, Integer, String, Text, func
+from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy.types import JSON
 
 from app.db.base import Base
 from app.models.axis import Axis
@@ -40,6 +43,16 @@ class Lesson(Base):
         sa_enum(Visibility, "visibility"), nullable=False, default=Visibility.PUBLIC
     )
     description_short: Mapped[str | None] = mapped_column(Text, nullable=True)
+    # Liste ordonnee de phases pedagogiques : [{order, phase_key, title_ar,
+    # title_fr, body_ar, body_fr, media_note}, ...]. phase_key est un
+    # identifiant technique stable (ex. "observation", "hypothese"), jamais
+    # le libelle arabe affiche -- permet de changer le rendu sans casser les
+    # donnees. media_note decrit un schema/image du manuel pas encore
+    # numerise (jamais une vraie image). JSONB sur PostgreSQL, JSON generique
+    # ailleurs (SQLite en dev/tests) via with_variant.
+    content_sections: Mapped[list[dict[str, Any]] | None] = mapped_column(
+        JSON().with_variant(JSONB(), "postgresql"), nullable=True
+    )
     objectives: Mapped[str | None] = mapped_column(Text, nullable=True)
     competencies: Mapped[str | None] = mapped_column(Text, nullable=True)
     prerequisites: Mapped[str | None] = mapped_column(Text, nullable=True)

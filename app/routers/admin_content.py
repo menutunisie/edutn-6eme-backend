@@ -11,6 +11,7 @@ from app.schemas.content import (
     AxisCreate,
     AxisRead,
     AxisUpdate,
+    LessonDetailRead,
     LessonRead,
     SubjectRead,
     TermRead,
@@ -61,3 +62,8 @@ def list_lessons(
     db: Session = Depends(get_db),
 ) -> list[LessonRead]:
     return content_repository.list_lessons(db, unit_id=unit_id, axis_id=axis_id)
+
+
+@router.get("/lessons/{lesson_id}", response_model=LessonDetailRead)
+def get_lesson(lesson_id: uuid.UUID, db: Session = Depends(get_db)) -> LessonDetailRead:
+    return content_repository.get_lesson_or_404(db, lesson_id)
