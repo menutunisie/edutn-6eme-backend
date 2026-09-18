@@ -212,3 +212,56 @@ def test_second_lesson_content_sections_independent_from_first(client):
 
     # Aucune fuite de contenu entre les deux leçons.
     assert first_body["content_sections"] != second_body["content_sections"]
+
+
+def test_lesson_with_seven_sections_and_no_vocabulaire_phase(client):
+    """Couvre le cas de la 4e leçon pilote (انتثار الضّوء, 1re leçon de l'axe
+    الضّوء) : seulement 7 phases, pas de phase "vocabulaire" -- confirme que
+    content_sections est une liste libre, sans nombre de phases impose par
+    le schema (contrairement aux 2 premieres leçons pilotes, qui en ont 8)."""
+    seven_phase_sections = [
+        {
+            "order": i,
+            "phase_key": phase_key,
+            "title_ar": f"عنوان تجريبي {i}",
+            "title_fr": None,
+            "body_ar": f"نص تجريبي للمرحلة {i}",
+            "body_fr": None,
+            "media_note": "Schéma non numérisé." if i in (1, 4) else None,
+        }
+        for i, phase_key in enumerate(
+            [
+                "mobilisation_acquis",
+                "observation",
+                "hypothese",
+                "experimentation",
+                "conclusion",
+                "application",
+                "evaluation",
+            ],
+            start=1,
+        )
+    ]
+    lesson = _seed_lesson(
+        status=ValidationStatus.TO_REVIEW,
+        content_sections=seven_phase_sections,
+        title_ar="انتثار الضّوء",
+    )
+    headers = _admin_headers(client)
+
+    response = client.get(f"/admin/lessons/{lesson.id}", headers=headers)
+    assert response.status_code == 200
+    body = response.json()
+
+    assert len(body["content_sections"]) == 7
+    phase_keys = [s["phase_key"] for s in body["content_sections"]]
+    assert "vocabulaire" not in phase_keys
+    assert phase_keys == [
+        "mobilisation_acquis",
+        "observation",
+        "hypothese",
+        "experimentation",
+        "conclusion",
+        "application",
+        "evaluation",
+    ]
