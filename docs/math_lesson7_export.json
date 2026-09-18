@@ -1,0 +1,74 @@
+{
+  "id": "3641094e-a8df-578c-aca6-cff3f1a41374",
+  "unit_id": "5cf20dc2-3672-5017-801b-7f9e2c2a7a14",
+  "axis_id": null,
+  "week_id": null,
+  "title_fr": null,
+  "title_ar": "أبني زوايا أقيسها بالدّرجة (120-90-60-30-15)",
+  "status": "a_verifier",
+  "visibility": "PUBLIC",
+  "display_order": 1,
+  "description_short": "Contenu basé sur le manuel officiel de mathématiques 6e année, pages 21 à 23. Leçon de construction géométrique (angles) — figures non reproduites.",
+  "content_sections": [
+    {
+      "order": 1,
+      "phase_key": "mobilisation_acquis",
+      "title_ar": "أستحضر",
+      "title_fr": null,
+      "body_ar": "تمرين 1 : أبني [أس] منصّف الزّاوية [أب، أد]. ما نوع الزّاوية [أس، أج]؟ أعلّل إجابتي.",
+      "body_fr": null,
+      "media_note": "Figure avec 3 demi-droites depuis un point أ, angles 50° et 80° indiqués. Page 21.",
+      "exercices_non_transcrits": null
+    },
+    {
+      "order": 2,
+      "phase_key": "decouverte",
+      "title_ar": "أتكشّف",
+      "title_fr": null,
+      "body_ar": "تمرين 2 : السّيّد صلاح الدّين يبيع دهنا من 8 ألوان، مستعينا باللّوحة المجاورة أصبح يبيع دهنا من 12 لونا. المطلوب: مساعدته على إعداد لوحة مجسّمة جديدة للألوان الّتي يبيعها مستعملا المسطرة والبركار فقط، وعرض الطّريقة المعتمدة.",
+      "body_fr": null,
+      "media_note": "Roue chromatique divisée en secteurs colorés. Page 21.",
+      "exercices_non_transcrits": null
+    },
+    {
+      "order": 3,
+      "phase_key": "entrainement",
+      "title_ar": "أتدرّب",
+      "title_fr": null,
+      "body_ar": "تمرين 3 : أبني زاوية قيس فتحتها 45° بأكثر من طريقة. تمرين 4 : أبني زاوية قيس فتحتها 120° بطريقتين مختلفتين على الأقلّ. تمرين 5 : قالت أمل: بإمكاني بناء زاوية قائمة بطريقتين مختلفتين، وقالت ضياء: يمكن بناء هذه الزّاوية بأكثر من طريقتين. المطلوب: إثبات أنّ ضياء محقّة، وعرض الطّريقة. تمرين 6 : أبني زاوية قيس فتحتها بالغراد 150 بأكثر من طريقة (90 درجة = 100 غراد). تمرين 7 : أحدّد مراحل التّمشّي الواجب اتّباعه في بناء زاوية قيس فتحتها 150° بأكثر من طريقة، ثمّ أنجز البناء. تمرين 8 : أبني زاوية قيس فتحتها 75°.",
+      "body_fr": null,
+      "media_note": null,
+      "exercices_non_transcrits": null
+    },
+    {
+      "order": 4,
+      "phase_key": "application",
+      "title_ar": "أوظّف",
+      "title_fr": null,
+      "body_ar": "تمرين 9 : يمثّل الرّسم تصميما لقطعة مصوغ تسمّى «خلال» أعدّه حرفيّ شابّ قبل صنعها. المطلوب: التّعرّف على أقيسة زوايا المثلّث أ ب ج، ووصف ما يمثّله المستقيم (أهـ) بالنّسبة للقطعة [ب ج] ونصف المستقيم [أهـ] بالنّسبة للزّاوية [أب، أج]. ثمّ رسم زاوية [س ك، س ع] قيس فتحتها بالدّرجة 60 يكون [س ص] منصّفها، على ورقة غير مسطّرة مستعملا نصف مستقيم [س ص].",
+      "body_fr": null,
+      "media_note": "Schéma d'un bijou artisanal («خلال») avec triangle أ ب ج et cercles concentriques. Page 22.",
+      "exercices_non_transcrits": null
+    },
+    {
+      "order": 5,
+      "phase_key": "application",
+      "title_ar": "أوظّف (تطبيق فلكي)",
+      "title_fr": null,
+      "body_ar": "تمرين 10 : يمثّل الرّسم موقع ظلّ العمود الحامل للعلم في فترة محدّدة من النّهار (مسار وهمي للشّمس). المطلوب: تحديد موقع الشّمس في الفترة الأولى من النّهار عندما تكون فتحة الزّاوية أ 30°، وإعادة العمل بالنّسبة للفترة الثّانية بزاوية 45°.",
+      "body_fr": null,
+      "media_note": "Schéma d'un cadran solaire (arc de cercle représentant la trajectoire du soleil, poteau avec ombre). Page 23.",
+      "exercices_non_transcrits": null
+    },
+    {
+      "order": 6,
+      "phase_key": "evaluation_acquis",
+      "title_ar": "أقيّم مكتسباتي",
+      "title_fr": null,
+      "body_ar": "تمرين 11 : أبني زاوية [أب، أج] قيس فتحتها بالغراد 100. أبني منصّفها [أد]. أعيّن على [أج] نقطة «ن». أبني المستقيم ص العمودي على [أج] في النّقطة «ن» والذي يقطع [أد] في «ق». المطلوب: حساب قيس الزّاوية أ ق ن بالدّرجة، وتعليل الإجابة.",
+      "body_fr": null,
+      "media_note": null,
+      "exercices_non_transcrits": null
+    }
+  ]
+}
