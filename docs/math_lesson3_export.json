@@ -1,0 +1,54 @@
+{
+  "id": "aa2bf96f-00b0-5d41-8576-85cf92c0e835",
+  "unit_id": "4201d628-2205-56de-8328-04f3c6ce83a8",
+  "axis_id": null,
+  "week_id": null,
+  "title_fr": null,
+  "title_ar": "أوظّف الضّرب والقسمة في مجموعة الأعداد العشريّة",
+  "status": "a_verifier",
+  "visibility": "PUBLIC",
+  "display_order": 1,
+  "description_short": "Contenu basé sur le manuel officiel de mathématiques 6e année, pages 10 à 13.",
+  "content_sections": [
+    {
+      "order": 1,
+      "phase_key": "mobilisation_acquis",
+      "title_ar": "أستحضر",
+      "title_fr": null,
+      "body_ar": "تمرين 1 : لباعث عقاريّ مجموعة من قطع الأرض المستطيلة الشّكل أبعادها مبيّنة بجدول (قيس الطّول، قيس العرض، قيس المحيط، قيس المساحة لـ4 قطع، بعض الخانات ناقصة). المطلوب: البحث عن الأعداد المناسبة لفراغات الجدول.",
+      "body_fr": null,
+      "media_note": "Tableau à 5 colonnes, 4 lignes, plusieurs cases vides à compléter. Page 10.",
+      "exercices_non_transcrits": null
+    },
+    {
+      "order": 2,
+      "phase_key": "evaluation_acquis",
+      "title_ar": "أتعهّد مكتسباتي",
+      "title_fr": null,
+      "body_ar": "تمرين 2 : أ- عمليّات ضرب عمودية (0,1×365,48، 0,5×204، 0,98×18...). ب- عمليّات قسمة عمودية (0,1:13,08، 0,1:15، 4:38,4...). تمرين 3 : ألاحظ الجّزاء 10,9×15,08 وأحدّد دون إجراء العمليّة أيّ عدد من بين 150/164,372/1643,72 يمثّل النّتيجة المناسبة، ثمّ أعرض التّمشّي المعتمد.",
+      "body_fr": null,
+      "media_note": null,
+      "exercices_non_transcrits": "Exercices 4, 5, 6, 7 (pages 11) : compléter des égalités de division à trous ; déduire un résultat de division à partir d'une multiplication donnée sans calculer ; compléter des expressions numériques ; tableau de conversion distance (milles nautiques/km) pour 5 voiliers."
+    },
+    {
+      "order": 3,
+      "phase_key": "application",
+      "title_ar": "أوظّف",
+      "title_fr": null,
+      "body_ar": "تمرين 8 : فلاّح تأكّد من جودة بذور طماطم، كلّ 1,5 كغ من هذا النّوع يعطي 18,9 طن من الطّماطم (tableau de proportion à compléter), puis partenariat avec une société de services agricoles sur 5 parcelles voisines de 2,5 ha chacune. المطلوب: تحديد كتلة الطّماطم المنتجة بالطّن، والبحث عن المساحات التي زرعت طماطم بالهكتار.",
+      "body_fr": null,
+      "media_note": null,
+      "exercices_non_transcrits": "Exercice 9 (page 12) : problème sur un fabricant de vêtements (tissu, coût, marge bénéficiaire à 1/5 du coût)."
+    },
+    {
+      "order": 4,
+      "phase_key": "evaluation_acquis",
+      "title_ar": "أقيّم مكتسباتي",
+      "title_fr": null,
+      "body_ar": "تمرين 10 : قصد ترشيد استهلاك الماء، ضبطت عائلة مخطّطا بيانيّا لكميّة الماء المستهلكة خلال 6 أشهر متتالية من السّنة، ثمّ استطاعت تخفيض استهلاكها خلال السّداسيّة الموالية بـ4,8 م³. المطلوب: تحديد كميّات الماء المستهلكة خلال كلّ شهر وضبط جدول في ذلك، والبحث عن معدّل كميّة الماء المستهلكة في الشّهر الواحد بطريقتين مختلفتين.",
+      "body_fr": null,
+      "media_note": "Graphique en bâtons (consommation d'eau mensuelle sur 6 mois, valeurs entre 6 et 11 m³) + illustration balance eau/argent. Pages 12-13.",
+      "exercices_non_transcrits": null
+    }
+  ]
+}
