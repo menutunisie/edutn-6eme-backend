@@ -33,7 +33,8 @@ tests/         # tests pytest (auth, roles, rotation du refresh token)
 
 ## Installation locale
 
-Prerequis : Python 3.12+, PostgreSQL accessible localement (ou via Railway).
+Prerequis : Python 3.12+, Docker Desktop (pour PostgreSQL en local — voir
+ci-dessous).
 
 ```bash
 python -m venv .venv
@@ -43,10 +44,27 @@ pip install -r requirements-dev.txt   # inclut requirements.txt + pytest/httpx
 cp .env.example .env               # puis renseigner les valeurs reelles
 ```
 
+## PostgreSQL local (Docker)
+
+Le repo contient un `docker-compose.yml` qui demarre un PostgreSQL local
+(volume Docker nomme, pas de bind-mount) — a lancer avant l'API :
+
+```bash
+docker compose up -d
+```
+
+Les identifiants (`POSTGRES_USER`/`POSTGRES_PASSWORD`/`POSTGRES_DB`/`POSTGRES_PORT`)
+sont lus depuis `.env` ; `DATABASE_URL` doit pointer vers ce meme conteneur
+(ex. `postgresql://edutn6:motdepasse@localhost:5437/edutn6_dev` — le port
+5432 par defaut peut etre deja pris par un autre projet local, adapter
+`POSTGRES_PORT` le cas echeant).
+
 ## Lancement local
 
 ```bash
-uvicorn app.main:app --reload
+docker compose up -d       # 1. PostgreSQL (si pas deja demarre)
+alembic upgrade head       # 2. migrations (premiere fois / apres pull)
+uvicorn app.main:app --reload   # 3. API
 ```
 
 L'API est alors disponible sur http://localhost:8000, la documentation interactive

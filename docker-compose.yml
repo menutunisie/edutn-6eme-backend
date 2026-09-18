@@ -1,0 +1,24 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-edutn6}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-edutn6_dev_password}
+      POSTGRES_DB: ${POSTGRES_DB:-edutn6_dev}
+    ports:
+      - "${POSTGRES_PORT:-5437}:5432"
+    volumes:
+      - edutn6_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-edutn6} -d ${POSTGRES_DB:-edutn6_dev}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  # Volume nomme gere par Docker (pas un bind-mount vers E:, disque FAT32
+  # source des erreurs "disk I/O error" avec SQLite) : les donnees vivent
+  # dans le stockage interne de Docker Desktop (WSL2 sur Windows).
+  edutn6_postgres_data:
+    name: edutn6_postgres_data
