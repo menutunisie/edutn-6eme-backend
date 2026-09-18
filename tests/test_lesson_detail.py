@@ -441,3 +441,91 @@ def test_math_lesson_content_sections_include_exercices_non_transcrits(client):
         public_body["content_sections"][1]["exercices_non_transcrits"]
         == "Exercices 4 à 7 (pages 5-6), résumé de leur contenu."
     )
+
+
+# title_ar exact des 8 Unit "leçon" de Mathematiques (Axe 1 a 9, hors 6/10/11/12
+# -- revision/evaluation/jeux, sans Lesson).
+_MATH_LESSON_UNIT_TITLES = [
+    "أوظّف الجمع و الطّرح في مجموعة الأعداد العشريّة",
+    "أتصرّف في وحدات قيس المساحة",
+    "أوظّف الضّرب والقسمة في مجموعة الأعداد العشريّة",
+    "أوظّف التّعامد والتّوازي ومنصّف الزّاوية في البناءات الهندسيّة",
+    "أوظّف الجمع والطرح والضّرب على الأعداد التي تقيس الزّمن",
+    "أبني زوايا أقيسها بالدّرجة (120-90-60-30-15)",
+    "أبني مثلثا استنادا إلى أقيسة الأضلاع والزّوايا",
+    "أتعرّف شبه المنحرف وأرسمه",
+]
+
+
+def test_eight_math_lesson_units_each_have_exactly_one_lesson(client):
+    """Reproduit la convention validee pour les 8 Unit "leçon" de
+    Mathematiques (Axe 1, 2, 3, 4, 5, 7, 8, 9 -- les Axe 6/10/11/12 sont de
+    la revision/evaluation/jeux, sans Lesson) : chacune a exactement 1
+    Lesson, dont title_ar est une copie exacte du title_ar de l'Unit
+    parente, et content_sections=None est gere proprement quand pas encore
+    redige (cas des 7 nouvelles Lesson, seule l'Axe 1 est deja remplie)."""
+    db = SessionLocal()
+    try:
+        school_level = SchoolLevel(
+            code=f"math-units-test-{uuid.uuid4()}", name_fr="Niveau test", name_ar="مستوى"
+        )
+        db.add(school_level)
+        db.flush()
+
+        subject = Subject(
+            school_level_id=school_level.id,
+            code=f"MATH_TEST_{uuid.uuid4()}",
+            name_fr="Mathematiques test",
+            name_ar="رياضيات",
+            color="#2563EB",
+        )
+        db.add(subject)
+        db.flush()
+
+        term = Term(
+            subject_id=subject.id, code="T1", name_fr="Premier trimestre", name_ar="الثلاثي الأول"
+        )
+        db.add(term)
+        db.flush()
+
+        unit_ids = []
+        for i, title_ar in enumerate(_MATH_LESSON_UNIT_TITLES, start=1):
+            unit = Unit(
+                term_id=term.id,
+                title_fr=None,
+                title_ar=title_ar,
+                status=ValidationStatus.PUBLISHED,
+                display_order=i,
+            )
+            db.add(unit)
+            db.flush()
+
+            lesson = Lesson(
+                unit_id=unit.id,
+                title_ar=title_ar,
+                status=ValidationStatus.TO_REVIEW,
+                content_sections=None,
+            )
+            db.add(lesson)
+            db.flush()
+
+            unit_ids.append(unit.id)
+
+        db.commit()
+    finally:
+        db.close()
+
+    headers = _admin_headers(client)
+
+    for unit_id, expected_title_ar in zip(unit_ids, _MATH_LESSON_UNIT_TITLES):
+        list_response = client.get(
+            "/admin/lessons", params={"unit_id": str(unit_id)}, headers=headers
+        )
+        assert list_response.status_code == 200
+        lessons = list_response.json()
+        assert len(lessons) == 1
+        assert lessons[0]["title_ar"] == expected_title_ar
+
+        detail_response = client.get(f"/admin/lessons/{lessons[0]['id']}", headers=headers)
+        assert detail_response.status_code == 200
+        assert detail_response.json()["content_sections"] is None

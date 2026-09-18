@@ -1,0 +1,51 @@
+[
+  {
+    "axe": 2,
+    "lesson_id": "5ac450ce-c738-5239-b9e5-d68a6b98e782",
+    "unit_id": "839eb87e-c0c9-5df7-b48e-4b8625d5d846",
+    "title_ar": "أتصرّف في وحدات قيس المساحة",
+    "description_short": "Contenu basé sur le manuel officiel de mathématiques 6e année, page 8."
+  },
+  {
+    "axe": 3,
+    "lesson_id": "aa2bf96f-00b0-5d41-8576-85cf92c0e835",
+    "unit_id": "4201d628-2205-56de-8328-04f3c6ce83a8",
+    "title_ar": "أوظّف الضّرب والقسمة في مجموعة الأعداد العشريّة",
+    "description_short": "Contenu basé sur le manuel officiel de mathématiques 6e année, page 10."
+  },
+  {
+    "axe": 4,
+    "lesson_id": "a4450788-0d63-5d43-8b11-0be58ea7ab03",
+    "unit_id": "dfdf694a-a599-5467-87a3-55ae15e89374",
+    "title_ar": "أوظّف التّعامد والتّوازي ومنصّف الزّاوية في البناءات الهندسيّة",
+    "description_short": "Contenu basé sur le manuel officiel de mathématiques 6e année, page 14."
+  },
+  {
+    "axe": 5,
+    "lesson_id": "77fd1dba-9f68-586b-bec1-e34604330795",
+    "unit_id": "c6f1f31f-1d73-5426-b598-6ef63eaa3a19",
+    "title_ar": "أوظّف الجمع والطرح والضّرب على الأعداد التي تقيس الزّمن",
+    "description_short": "Contenu basé sur le manuel officiel de mathématiques 6e année, page 16."
+  },
+  {
+    "axe": 7,
+    "lesson_id": "3641094e-a8df-578c-aca6-cff3f1a41374",
+    "unit_id": "5cf20dc2-3672-5017-801b-7f9e2c2a7a14",
+    "title_ar": "أبني زوايا أقيسها بالدّرجة (120-90-60-30-15)",
+    "description_short": "Contenu basé sur le manuel officiel de mathématiques 6e année, page 21."
+  },
+  {
+    "axe": 8,
+    "lesson_id": "ba3bd794-a825-503f-b3b7-09d3edf6450f",
+    "unit_id": "d5aac4b7-46c3-537b-a771-44c829d40b72",
+    "title_ar": "أبني مثلثا استنادا إلى أقيسة الأضلاع والزّوايا",
+    "description_short": "Contenu basé sur le manuel officiel de mathématiques 6e année, page 24."
+  },
+  {
+    "axe": 9,
+    "lesson_id": "87d49b27-b5f1-5f32-b144-56a795e269b1",
+    "unit_id": "d423c692-aaba-5662-833b-aca8f12e38a2",
+    "title_ar": "أتعرّف شبه المنحرف وأرسمه",
+    "description_short": "Contenu basé sur le manuel officiel de mathématiques 6e année, page 27."
+  }
+]
