@@ -1,0 +1,44 @@
+{
+  "id": "5ac450ce-c738-5239-b9e5-d68a6b98e782",
+  "unit_id": "839eb87e-c0c9-5df7-b48e-4b8625d5d846",
+  "axis_id": null,
+  "week_id": null,
+  "title_fr": null,
+  "title_ar": "أتصرّف في وحدات قيس المساحة",
+  "status": "a_verifier",
+  "visibility": "PUBLIC",
+  "display_order": 1,
+  "description_short": "Contenu basé sur le manuel officiel de mathématiques 6e année, pages 8 à 9.",
+  "content_sections": [
+    {
+      "order": 1,
+      "phase_key": "mobilisation_acquis",
+      "title_ar": "أتعهّد مكتسباتي",
+      "title_fr": null,
+      "body_ar": "تمرين 1 : أ- أكمل في كلّ مرّة بالوحدة المناسبة: 305 م² = ...30500 = ....0,0305 = ...3,05. 41 آر = ...4100 = ...0,41. ب- أحوّل إلى الوحدة المذكورة: 1,07 كم² = ...دكم² = ...هم². 5,809 آر = ...م² = .....",
+      "body_fr": null,
+      "media_note": null,
+      "exercices_non_transcrits": null
+    },
+    {
+      "order": 2,
+      "phase_key": "application",
+      "title_ar": "أوظّف",
+      "title_fr": null,
+      "body_ar": "تمرين 2 : شرت خيّاطة لفيفة من القماش طولها 18 آلم وعرضها 1,2 آلم، قصّتها إلى قطع مربّعة الشّكل قيس ضلع الواحدة منها مساوٍ لقيس عرض القماش، ثمّ جزّأت كلّ قطعة مربّعة إلى 9 مناديل مربّعة الشّكل ومتقايسة، وأحاطت جميع المناديل بسفيفة ثمن المتر منها 0,875 د. المطلوب: مقايس مساحة كلّ من القطع التي تحصّلت عليها، قيس مساحة المنديل الواحد بالدسم²، ثمن السّفيفة اللازمة لجميع المناديل.",
+      "body_fr": null,
+      "media_note": null,
+      "exercices_non_transcrits": "Exercices 3 et 4 (page 8-9) : tableau de calcul d'aires/périmètres pour 5 formes de terrain (rectangulaire, carrée, irrégulière) ; problème de jardin public circulaire avec allées et calcul de surfaces proportionnelles."
+    },
+    {
+      "order": 3,
+      "phase_key": "evaluation_acquis",
+      "title_ar": "أقيّم مكتسباتي",
+      "title_fr": null,
+      "body_ar": "تمرين 5 : عرض بائع عقاريّ على مهندس وكالته مشروعا لتهيئة قطع أرض مختلفة الأبعاد وطلب منه أن يعدّ لها تصاميم كلّ 10م في الحقيقة 2 صم على التّصميم. المطلوب: البحث عن الأعداد المناسبة لفراغات الجدول (3 قطع مستطيلة)، ثمّ حساب مساحة كلّ قطعة على التّصميم بحساب الصّمّ2.",
+      "body_fr": null,
+      "media_note": "Tableau à 3 lignes (longueur/largeur réelles et sur plan, surface) à compléter. Page 9.",
+      "exercices_non_transcrits": null
+    }
+  ]
+}
