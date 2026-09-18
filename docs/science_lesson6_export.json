@@ -1,0 +1,86 @@
+{
+  "id": "50b90616-b223-5b96-a91e-cea404f64ea3",
+  "unit_id": "2296c9b1-a516-56b4-9305-bf1e09d8426c",
+  "axis_id": "c4bb4058-e593-5b10-85a7-c40ca93d8255",
+  "week_id": null,
+  "title_fr": null,
+  "title_ar": "انكسار الضّوء",
+  "status": "a_verifier",
+  "visibility": "PUBLIC",
+  "display_order": 3,
+  "description_short": "Contenu basé sur le manuel officiel d'éveil scientifique 6e année (édition 2021), pages 25 à 28.",
+  "content_sections": [
+    {
+      "order": 1,
+      "phase_key": "mobilisation_acquis",
+      "title_ar": "أتعهّد مكتسباتي السّابقة",
+      "title_fr": null,
+      "body_ar": "أنسخ الجدول التّالي على كرّاسي وأعمّر الخانات الفارغة بـ: جسم عاتم ـ الانعكاس ـ جسم شفّاف ـ الانتثار ـ جسم شفّاف.",
+      "body_fr": null,
+      "media_note": "Tableau à 5 colonnes à compléter (définitions liées à la transparence/opacité des objets et aux phénomènes lumineux). Page 25."
+    },
+    {
+      "order": 2,
+      "phase_key": "observation",
+      "title_ar": "ألاحظ وأتساءل",
+      "title_fr": null,
+      "body_ar": "غمس فراس فرشاة الأسنان في كأس ملآنة ماء إلى النّصف فبدت له معوجّة عند سطح الماء. أفسّر هذه الظّاهرة.",
+      "body_fr": null,
+      "media_note": null
+    },
+    {
+      "order": 3,
+      "phase_key": "hypothese",
+      "title_ar": "أفترض",
+      "title_fr": null,
+      "body_ar": "أتخيّر الافتراض الملائم: 1- اعوجّت الفرشاة عند غمسها في الماء. 2- اعوجّت الفرشاة نتيجة تحريكها في الماء. 3- بدت الفرشاة معوجّة نتيجة مرور الضّوء من الهواء إلى الماء.",
+      "body_fr": null,
+      "media_note": null
+    },
+    {
+      "order": 4,
+      "phase_key": "experimentation",
+      "title_ar": "أجرّب وأثبّت",
+      "title_fr": null,
+      "body_ar": "أتأكّد من صحّة الافتراض الأوّل بإخراج الفرشاة من الكأس. أتأكّد من صحّة الافتراض الثّاني بالانتظار قليلا حتّى يسكن الماء. أتأكّد من صحّة الافتراض الثّالث بإجراء التّجربتين التّاليتين: أوجّه ضوء المكشاف نحو حويض ماء مملوء إلى النّصف. أغمس قلما في إناء به ماء في وضع مائل.",
+      "body_fr": null,
+      "media_note": "Photos : lampe dirigée vers un bac d'eau à moitié rempli ; crayon plongé dans un récipient d'eau incliné, paraissant brisé. Page 26."
+    },
+    {
+      "order": 5,
+      "phase_key": "conclusion",
+      "title_ar": "أستنتج",
+      "title_fr": null,
+      "body_ar": "انكسار [الضّوء] هو [تغيّر] في مسار الأشعّة الضّوئيّة المارّة من وسط [شفّاف] إلى وسط [شفّاف] آخر يختلف عنه من حيث الشّفافيّة إذا وردت بشكل [...] على السّطح الفاصل بين الوسطين الشّفّافين.",
+      "body_fr": null,
+      "media_note": null
+    },
+    {
+      "order": 6,
+      "phase_key": "application",
+      "title_ar": "أطبّق وأوظّف",
+      "title_fr": null,
+      "body_ar": "أ- أرسم الشّعاع المنكسر أو الوارد في كلّ وضعيّة من الوضعيّات التّالية بعد نقل الرّسوم على كرّاسي. ب- أتمكّن من رؤية قطعة نقديّة مغمورة في حوض به ماء أقرب إلى سطح الماء ممّا هي عليه في الواقع. كيف تفسّر ذلك؟",
+      "body_fr": null,
+      "media_note": "3 schémas de rayons traversant des interfaces air/eau, air/alcool, air/eau de fleur d'oranger/air. Page 27."
+    },
+    {
+      "order": 7,
+      "phase_key": "evaluation",
+      "title_ar": "أقيّم تعلّمي الجديد",
+      "title_fr": null,
+      "body_ar": "كان صيّاد السّمك في زورقه ليلا يقترب من الميناء رويدا رويدا يهديه في طريقه الضّوء المنبعث من المنارة، فلاحظ أنّ الأشعّة الضّوئيّة السّاقطة على سطح الماء تغيّر اتّجاهها من الماء. أجيب عن الأسئلة التّالية كتابيّا: 1- ما هو الوسط الذي انتشر فيه الضّوء عند انبعاثه من المنارة؟ 2- متى تحدث ظاهرة انكسار الضّوء؟",
+      "body_fr": null,
+      "media_note": null
+    },
+    {
+      "order": 8,
+      "phase_key": "vocabulaire",
+      "title_ar": "معجمي في العلوم",
+      "title_fr": null,
+      "body_ar": "أنقل الشّبكة وأعمّرها: (1) ظاهرة انعطاف الضّوء عند مروره من وسط شفّاف إلى وسط شفّاف آخر يختلف عنه من حيث الشّفافيّة. (2) صفة الأشعّة المنتقلة من وسط شفّاف إلى وسط شفّاف آخر يختلف عنه من حيث الشّفافيّة. (3) صفة الشّعاع السّاقط على السّطح الفاصل بين وسطين شفّافين.",
+      "body_fr": null,
+      "media_note": null
+    }
+  ]
+}

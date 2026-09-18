@@ -320,3 +320,61 @@ def test_fifth_lesson_eight_sections_media_notes_on_experimentation_and_applicat
     ]
     with_media = [s["order"] for s in body["content_sections"] if s["media_note"]]
     assert with_media == [4, 6]
+
+
+def test_sixth_lesson_eight_sections_media_notes_on_mobilisation_experimentation_application(
+    client,
+):
+    """Couvre le cas de la 6e et derniere leçon pilote (انكسار الضّوء, 3e
+    leçon de l'axe الضّوء -- clot l'Unite 1 "العين والضوء") : 8 phases,
+    avec media_note sur "mobilisation_acquis" (ordre 1), "experimentation"
+    (ordre 4) et "application" (ordre 6)."""
+    eight_phase_sections = [
+        {
+            "order": i,
+            "phase_key": phase_key,
+            "title_ar": f"عنوان تجريبي {i}",
+            "title_fr": None,
+            "body_ar": f"نص تجريبي للمرحلة {i}",
+            "body_fr": None,
+            "media_note": "Schéma non numérisé." if i in (1, 4, 6) else None,
+        }
+        for i, phase_key in enumerate(
+            [
+                "mobilisation_acquis",
+                "observation",
+                "hypothese",
+                "experimentation",
+                "conclusion",
+                "application",
+                "evaluation",
+                "vocabulaire",
+            ],
+            start=1,
+        )
+    ]
+    lesson = _seed_lesson(
+        status=ValidationStatus.TO_REVIEW,
+        content_sections=eight_phase_sections,
+        title_ar="انكسار الضّوء",
+    )
+    headers = _admin_headers(client)
+
+    response = client.get(f"/admin/lessons/{lesson.id}", headers=headers)
+    assert response.status_code == 200
+    body = response.json()
+
+    assert len(body["content_sections"]) == 8
+    phase_keys = [s["phase_key"] for s in body["content_sections"]]
+    assert phase_keys == [
+        "mobilisation_acquis",
+        "observation",
+        "hypothese",
+        "experimentation",
+        "conclusion",
+        "application",
+        "evaluation",
+        "vocabulaire",
+    ]
+    with_media = [s["order"] for s in body["content_sections"] if s["media_note"]]
+    assert with_media == [1, 4, 6]
