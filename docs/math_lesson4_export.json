@@ -1,0 +1,54 @@
+{
+  "id": "a4450788-0d63-5d43-8b11-0be58ea7ab03",
+  "unit_id": "dfdf694a-a599-5467-87a3-55ae15e89374",
+  "axis_id": null,
+  "week_id": null,
+  "title_fr": null,
+  "title_ar": "أوظّف التّعامد والتّوازي ومنصّف الزّاوية في البناءات الهندسيّة",
+  "status": "a_verifier",
+  "visibility": "PUBLIC",
+  "display_order": 1,
+  "description_short": "Contenu basé sur le manuel officiel de mathématiques 6e année, pages 14 à 15. Leçon de construction géométrique (règle et compas) — les figures elles-mêmes ne sont pas reproduites, seules les consignes de construction sont transcrites.",
+  "content_sections": [
+    {
+      "order": 1,
+      "phase_key": "mobilisation_acquis",
+      "title_ar": "أتعهّد مكتسباتي",
+      "title_fr": null,
+      "body_ar": "تمرين 1 : أنقل قطعة المستقيم [أ ب] على كرّاس المحاولات. أبني المستقيم س الموسّط العمودي لقطعة المستقيم [أ ب]. أعيّن على المستقيم س نقطة «ن». ما نوع المثلّث أ ن ب؟ أعلّل إجابتي.",
+      "body_fr": null,
+      "media_note": "Segment [أ ب] tracé en bleu à reporter. Page 14.",
+      "exercices_non_transcrits": null
+    },
+    {
+      "order": 2,
+      "phase_key": "application",
+      "title_ar": "أوظّف",
+      "title_fr": null,
+      "body_ar": "تمرين 2 : بأحد الحمّامات الأثريّة قاعة مستطيلة الشّكل بعداها 20 و12م، يتوسّط هذه القاعة حوض دائريّ قيس قطره 8م. المطلوب: رسم تصميم لهذه القاعة ممثّلا كلّ 2م في الحقيقة بـ1صم على التّصميم، مستعملا المسطرة والبركار فقط.",
+      "body_fr": null,
+      "media_note": "Illustration d'un hammam antique avec colonnade. Page 14.",
+      "exercices_non_transcrits": null
+    },
+    {
+      "order": 3,
+      "phase_key": "construction_geometrique",
+      "title_ar": "تمرين إنشاء هندسي",
+      "title_fr": null,
+      "body_ar": "تمرين 3 : رسمت عائشة مربّعا أ ب ج د مركزه «م» وقيس قطره بالصّمّ 8، ثمّ رسمت محوري تناظره اللّذين يقطعان أضلاعه [أب]، [بج]، [جد]، [دأ] تباعا في النّقاط س،ن،ع،ط، ودائرة مركزها م وقيس شعاعها بالصّمّ 4. المطلوب: إعادة رسم الشّكل بالمسطرة والبركار فقط، تحديد نوع الرّباعي س ن ع ط وتعليل الإجابة، وتلوين أجزاء الشّكل بأربعة ألوان مختلفة بحيث لا يشترك فضاءان متجاوران في نفس اللّون. تمرين 4 : أراد أحمد أن يصنع مروحة من الورق المقوّى فرسم مستقيمين متعامدين في النّقطة «أ»، ودائرة مركزها «أ» قيس شعاعها بالصّمّ 5، و4 مثلّثات متقايسة الأضلاع لا تشترك إلاّ في الرّأس. المطلوب: رسم هذه المروحة، حساب محيط كلّ مثلّث، وفتحة الزّاوية المحصورة بين مثلّثين متتاليين.",
+      "body_fr": null,
+      "media_note": null,
+      "exercices_non_transcrits": null
+    },
+    {
+      "order": 4,
+      "phase_key": "evaluation_acquis",
+      "title_ar": "أقيّم مكتسباتي",
+      "title_fr": null,
+      "body_ar": "تمرين 5 : أرادت «ملاك» أن تعيد رسم «وردة الرّياح» التي رأتها على مؤخّرة زورق بميناء حلق الوادي، فرسمت: مستقيمين س و ص متعامدين في النّقطة «أ»، دائرتين مركز كلّ منهما «أ» وقيس شعاعهما تباعا بالصّمّ 3 و8، قطع مستقيم محمولة على منصّفات الزّوايا القائمة والّتي طرفا كلّ منها مركز الدّائرة الخارجيّة ونقطة منها، وقطع مستقيم محمولة على منصّفات الزّوايا الحادّة والّتي طرفا كلّ منها مركز الدّائرة الدّاخليّة ونقطة منها، وقطع مستقيمات تصل بين كلّ نقطة معيّنة على الدّائرة الخارجيّة بالنّقطتين المجاورتين لها على الدّائرة الدّاخليّة. المطلوب: إعادة رسم «وردة الرّياح» بدوري.",
+      "body_fr": null,
+      "media_note": "Illustration d'un moulin/rose des vents décoratif dans un paysage. Page 15.",
+      "exercices_non_transcrits": null
+    }
+  ]
+}
