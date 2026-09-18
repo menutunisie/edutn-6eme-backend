@@ -71,48 +71,7 @@
     "title_fr": "L'œil et la lumière",
     "title_ar": "العين والضوء"
   },
-  "eveil_scientifique_lessons": [
-    {
-      "id": "368b4fec-ddea-5cf8-93ae-45c623e2bad0",
-      "title_ar": "تركيب العين",
-      "display_order": 1
-    },
-    {
-      "id": "3a90eb05-4a63-527f-ac1a-e25931cb773f",
-      "title_ar": "أعضاء العين ووظائفها",
-      "display_order": 2
-    },
-    {
-      "id": "2f252f39-501d-58e6-b7fb-f26404a39818",
-      "title_ar": "انتشار الضوء",
-      "display_order": 3
-    },
-    {
-      "id": "ce337a5e-53a9-5e53-9e58-1bf5a3e6f53d",
-      "title_ar": "انعكاس الضوء",
-      "display_order": 4
-    },
-    {
-      "id": "dbb9848c-9e49-5c5c-a166-1cf966412b60",
-      "title_ar": "عيوب الرؤية",
-      "display_order": 5
-    },
-    {
-      "id": "b24dc6c6-6089-5bb9-8f96-2a7335465096",
-      "title_ar": "انكسار الضوء",
-      "display_order": 6
-    },
-    {
-      "id": "7af67823-8033-5339-9e42-3cbebe3bd057",
-      "title_ar": "انتثار الضوء",
-      "display_order": 7
-    },
-    {
-      "id": "dddec68f-0924-5f07-9ad8-9d1cae206d03",
-      "title_ar": "وسائل إصلاح عيوب الرؤية",
-      "display_order": 8
-    }
-  ],
+  "eveil_scientifique_lessons": "OBSOLETE — ces 8 Lesson ont ete supprimees par la migration 56a9ee47f7fa (cartographie initiale erronee). Voir docs/science_t1_axes_export.json pour la structure correcte (2 Axis, 6 Lesson).",
   "resource_types_rep": [
     {
       "id": "5f2b0012-0d44-577b-9cb3-ce99fa2fb0ee",

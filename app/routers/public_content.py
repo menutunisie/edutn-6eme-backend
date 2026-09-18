@@ -1,3 +1,5 @@
+import uuid
+
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
@@ -12,11 +14,12 @@ router = APIRouter(prefix="/public", tags=["public-content"])
 def list_public_lessons(
     subject_code: str | None = Query(default=None),
     term_code: str | None = Query(default=None),
+    axis_id: uuid.UUID | None = Query(default=None),
     db: Session = Depends(get_db),
 ) -> list[LessonPublicRead]:
     """Endpoint public (aucune authentification) : n'expose que les Lesson
     au statut PUBLISHED. Actuellement vide tant qu'aucun contenu reel n'a
     ete valide et publie."""
     return content_repository.list_published_lessons(
-        db, subject_code=subject_code, term_code=term_code
+        db, subject_code=subject_code, term_code=term_code, axis_id=axis_id
     )

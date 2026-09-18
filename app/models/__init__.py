@@ -1,3 +1,4 @@
+from app.models.axis import Axis
 from app.models.enums import ResourceLanguage, ValidationStatus, Visibility
 from app.models.lesson import Lesson
 from app.models.refresh_token import RefreshToken
@@ -12,6 +13,7 @@ from app.models.user import User, UserRole
 from app.models.week import Week
 
 __all__ = [
+    "Axis",
     "Lesson",
     "RefreshToken",
     "Resource",

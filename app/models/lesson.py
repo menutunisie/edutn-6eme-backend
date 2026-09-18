@@ -5,6 +5,7 @@ from sqlalchemy import Boolean, DateTime, ForeignKey, Integer, String, Text, fun
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db.base import Base
+from app.models.axis import Axis
 from app.models.enums import ValidationStatus, Visibility, sa_enum
 from app.models.unit import Unit
 from app.models.week import Week
@@ -16,6 +17,12 @@ class Lesson(Base):
     id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
     unit_id: Mapped[uuid.UUID] = mapped_column(
         ForeignKey("units.id", ondelete="CASCADE"), nullable=False, index=True
+    )
+    # Denormalisation volontaire : meme quand une Lesson appartient a un Axis,
+    # unit_id reste renseigne (permet de retrouver l'Unit sans passer par
+    # l'Axis, utile pour les matieres qui n'utilisent pas ce niveau).
+    axis_id: Mapped[uuid.UUID | None] = mapped_column(
+        ForeignKey("axes.id", ondelete="SET NULL"), nullable=True, index=True
     )
     week_id: Mapped[uuid.UUID | None] = mapped_column(
         ForeignKey("weeks.id", ondelete="SET NULL"), nullable=True, index=True
@@ -47,6 +54,7 @@ class Lesson(Base):
     )
 
     unit: Mapped[Unit] = relationship(back_populates="lessons")
+    axis: Mapped[Axis | None] = relationship(back_populates="lessons")
     week: Mapped[Week | None] = relationship(back_populates="lessons")
     resources: Mapped[list["Resource"]] = relationship(back_populates="lesson")
     tags: Mapped[list["Tag"]] = relationship(secondary="lesson_tags", back_populates="lessons")

@@ -1,0 +1,72 @@
+{
+  "_meta": {
+    "description": "IDs deterministes (uuid5) crees par la migration 56a9ee47f7fa. Remplace les 8 anciennes Lesson (voir fcc3393abfea, desormais supprimees).",
+    "migration_revision": "56a9ee47f7fa"
+  },
+  "unit": {
+    "unit_id": "2296c9b1-a516-56b4-9305-bf1e09d8426c",
+    "unit_title_ar": "العين والضوء"
+  },
+  "axes": [
+    {
+      "id": "9b2fb734-d715-5998-b898-4f9df5ba0f87",
+      "title_ar": "جسم الإنسان",
+      "description": "Contenu basé sur le manuel officiel d'éveil scientifique 6e année (édition 2021).",
+      "status": "a_verifier",
+      "display_order": 1,
+      "lessons": [
+        {
+          "id": "dfe3794b-6950-52e5-8fd2-c6fe0fce0f45",
+          "title_ar": "تركيبة العين",
+          "description_short": "Contenu basé sur le manuel officiel — page 7.",
+          "status": "a_verifier",
+          "display_order": 1
+        },
+        {
+          "id": "3588d145-8a31-56ed-b24a-fbd5749ed79d",
+          "title_ar": "العين والرّؤية",
+          "description_short": "Contenu basé sur le manuel officiel — page 14. L'œil comme organe sensoriel.",
+          "status": "a_verifier",
+          "display_order": 2
+        },
+        {
+          "id": "ee947b8a-bc52-5b4f-a834-51ff707ff9c2",
+          "title_ar": "عيوب الرّؤية ووسائل الإصلاح",
+          "description_short": "Contenu basé sur le manuel officiel — page 22. Inclut les notions de lentilles (العدسات).",
+          "status": "a_verifier",
+          "display_order": 3
+        }
+      ]
+    },
+    {
+      "id": "c4bb4058-e593-5b10-85a7-c40ca93d8255",
+      "title_ar": "الضّوء",
+      "description": "Contenu basé sur le manuel officiel d'éveil scientifique 6e année (édition 2021). Inclut une activité de consolidation lexicale (مُعجَمي في العُلوم, page 28) à modéliser plus tard comme Resource.",
+      "status": "a_verifier",
+      "display_order": 2,
+      "lessons": [
+        {
+          "id": "4128f300-795c-5a63-ab3e-443d85a06294",
+          "title_ar": "انتثار الضّوء",
+          "description_short": "Contenu basé sur le manuel officiel — page 10.",
+          "status": "a_verifier",
+          "display_order": 1
+        },
+        {
+          "id": "8678a886-607f-5ad1-9af6-efdbacfea133",
+          "title_ar": "انعكاس الضّوء",
+          "description_short": "Contenu basé sur le manuel officiel — page 18.",
+          "status": "a_verifier",
+          "display_order": 2
+        },
+        {
+          "id": "50b90616-b223-5b96-a91e-cea404f64ea3",
+          "title_ar": "انكسار الضّوء",
+          "description_short": "Contenu basé sur le manuel officiel — page 26.",
+          "status": "a_verifier",
+          "display_order": 3
+        }
+      ]
+    }
+  ]
+}
