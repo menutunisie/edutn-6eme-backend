@@ -15,3 +15,7 @@ env/
 .DS_Store
 .idea/
 .vscode/
+
+# Fichiers uploades en local (jamais commites) ; .gitkeep garde le dossier
+storage/*
+!storage/.gitkeep

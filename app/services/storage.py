@@ -9,10 +9,13 @@ permissions) n'est implementee ici : ce sera fait a partir de l'etape 8
 
 from abc import ABC, abstractmethod
 from functools import lru_cache
+from pathlib import Path
 
 from supabase import Client, create_client
 
 from app.core.config import get_settings
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
 class StorageService(ABC):
@@ -61,6 +64,16 @@ class SupabaseStorageService(StorageService):
 
 @lru_cache
 def get_storage_service() -> StorageService:
+    """Point d'entree unique du stockage : le provider est choisi par
+    STORAGE_PROVIDER. Aucun autre code ne doit instancier un provider."""
     settings = get_settings()
+    if settings.storage_provider == "local":
+        from app.services.local_storage import LocalFileStorageService
+
+        root = Path(settings.local_storage_root)
+        if not root.is_absolute():
+            root = PROJECT_ROOT / root
+        return LocalFileStorageService(root=root, base_url=settings.media_base_url)
+
     client = create_client(settings.supabase_url, settings.supabase_key)
     return SupabaseStorageService(client=client, bucket=settings.supabase_storage_bucket)

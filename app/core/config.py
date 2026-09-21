@@ -1,4 +1,5 @@
 from functools import lru_cache
+from typing import Literal
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -17,6 +18,14 @@ class Settings(BaseSettings):
 
     # CORS (liste d'origines separees par des virgules dans le .env)
     cors_origins: str = "http://localhost:3000,http://localhost:8080"
+
+    # Stockage de fichiers : "local" (disque du backend, dev) ou "supabase".
+    # Point de bascule unique : voir get_storage_service() dans app/services/storage.py.
+    storage_provider: Literal["local", "supabase"] = "local"
+    # Dossier racine du stockage local (relatif a la racine du projet si non absolu).
+    local_storage_root: str = "storage"
+    # URL publique du backend, utilisee pour construire les URL de fichiers servis en local.
+    media_base_url: str = "http://localhost:8000"
 
     # Supabase Storage
     supabase_url: str = ""
