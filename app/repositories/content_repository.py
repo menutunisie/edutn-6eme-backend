@@ -16,26 +16,27 @@ from app.services.storage import get_storage_service
 
 
 def _with_resolved_resource_urls(db: Session, lesson: Lesson) -> Lesson:
-    """Ajoute resource_url (calcule, jamais stocke) a chaque entree de
-    content_sections portant un resource_id qui pointe vers une Resource
-    non archivee. Mutation en memoire uniquement (aucun flush/commit) : ne
-    modifie jamais ce qui est persiste en base."""
+    """Ajoute resource_url/resource_urls (calcules, jamais stockes) a chaque
+    entree de content_sections portant un resource_id (image unique) ou
+    resource_ids (plusieurs images sur une meme phase) qui pointe(nt) vers
+    une/des Resource non archivee(s). Mutation en memoire uniquement (aucun
+    flush/commit) : ne modifie jamais ce qui est persiste en base."""
     if not lesson.content_sections:
         return lesson
 
-    resource_ids = {
-        section["resource_id"]
-        for section in lesson.content_sections
-        if section.get("resource_id")
-    }
-    if not resource_ids:
+    all_ids = set()
+    for section in lesson.content_sections:
+        if section.get("resource_id"):
+            all_ids.add(section["resource_id"])
+        all_ids.update(section.get("resource_ids") or [])
+    if not all_ids:
         return lesson
 
     resources_by_id = {
         str(resource.id): resource
         for resource in db.scalars(
             select(Resource).where(
-                Resource.id.in_([uuid.UUID(rid) for rid in resource_ids]),
+                Resource.id.in_([uuid.UUID(rid) for rid in all_ids]),
                 Resource.status != ValidationStatus.ARCHIVED,
             )
         )
@@ -47,9 +48,21 @@ def _with_resolved_resource_urls(db: Session, lesson: Lesson) -> Lesson:
     resolved_sections = []
     for section in lesson.content_sections:
         section = dict(section)
+
         resource = resources_by_id.get(section.get("resource_id"))
         if resource is not None and resource.file_ref:
             section["resource_url"] = storage.get_url(resource.file_ref)
+
+        resource_ids = section.get("resource_ids")
+        if resource_ids:
+            urls = [
+                storage.get_url(matched.file_ref)
+                for rid in resource_ids
+                if (matched := resources_by_id.get(rid)) is not None and matched.file_ref
+            ]
+            if urls:
+                section["resource_urls"] = urls
+
         resolved_sections.append(section)
     lesson.content_sections = resolved_sections
     return lesson

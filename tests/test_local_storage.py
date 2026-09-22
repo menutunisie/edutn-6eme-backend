@@ -167,6 +167,74 @@ def test_lesson_detail_resolves_resource_id_to_resource_url(client):
     assert public_body["content_sections"][0]["resource_url"] == resource_url
 
 
+def test_lesson_detail_resolves_multiple_resource_ids_on_one_phase(client):
+    """Couvre le cas d'une phase avec plusieurs images (resource_ids, liste)
+    -- introduit par la 3e leçon pilote de sciences (عيوب الرّؤية ووسائل
+    الإصلاح, phase 4 : 2 schemas). resource_ids se resout en resource_urls
+    (liste), sans toucher a resource_id/resource_url (case a image unique,
+    reste inchange sur les autres phases)."""
+    lesson = _seed_lesson(
+        status=ValidationStatus.PUBLISHED,
+        content_sections=[
+            {
+                "order": 4,
+                "phase_key": "experimentation",
+                "title_ar": "أجرّب",
+                "title_fr": None,
+                "body_ar": "نص",
+                "body_fr": None,
+                "media_note": "Légende double.",
+            }
+        ],
+    )
+
+    db = SessionLocal()
+    try:
+        resource_type = ResourceType(code=f"TYPE_{uuid.uuid4().hex[:8]}", name_fr="Type", name_ar="نوع")
+        db.add(resource_type)
+        db.flush()
+        resource_a = Resource(
+            lesson_id=lesson.id,
+            resource_type_id=resource_type.id,
+            status=ValidationStatus.TO_REVIEW,
+            file_ref=build_lesson_media_path(lesson.id, "a.png"),
+        )
+        resource_b = Resource(
+            lesson_id=lesson.id,
+            resource_type_id=resource_type.id,
+            status=ValidationStatus.TO_REVIEW,
+            file_ref=build_lesson_media_path(lesson.id, "b.png"),
+        )
+        db.add_all([resource_a, resource_b])
+        db.commit()
+        db.refresh(resource_a)
+        db.refresh(resource_b)
+        resource_ids = [str(resource_a.id), str(resource_b.id)]
+    finally:
+        db.close()
+
+    db = SessionLocal()
+    try:
+        db_lesson = db.get(type(lesson), lesson.id)
+        sections = list(db_lesson.content_sections)
+        sections[0] = {**sections[0], "resource_ids": resource_ids}
+        db_lesson.content_sections = sections
+        db.commit()
+    finally:
+        db.close()
+
+    headers = _admin_headers(client)
+    body = client.get(f"/admin/lessons/{lesson.id}", headers=headers).json()
+    section = body["content_sections"][0]
+
+    assert section["resource_id"] is None
+    assert section["resource_url"] is None
+    assert len(section["resource_urls"]) == 2
+    assert section["resource_urls"][0].endswith(f"/media/lessons/{lesson.id}/a.png")
+    assert section["resource_urls"][1].endswith(f"/media/lessons/{lesson.id}/b.png")
+    assert section["media_note"] == "Légende double."
+
+
 def test_factory_returns_local_service_by_default():
     get_storage_service.cache_clear()
     try:
