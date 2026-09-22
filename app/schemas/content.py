@@ -9,7 +9,9 @@ class LessonContentSection(BaseModel):
     """Une phase pedagogique d'une Lesson (situation de depart, observation,
     hypothese...). phase_key est un identifiant technique stable, jamais le
     libelle arabe affiche. media_note decrit un schema/image du manuel pas
-    encore numerise -- jamais une vraie image."""
+    encore numerise (ou sert de legende/description une fois resource_id
+    renseigne). resource_id, quand present, reference une Resource (image)
+    a afficher pour cette phase -- voir /media/lessons/{lesson_id}/{filename}."""
 
     model_config = ConfigDict(from_attributes=True)
 
@@ -21,6 +23,10 @@ class LessonContentSection(BaseModel):
     body_fr: str | None = None
     media_note: str | None = None
     exercices_non_transcrits: str | None = None
+    resource_id: str | None = None
+    # Calcule a la lecture (jamais stocke) par content_repository, quand
+    # resource_id pointe vers une Resource existante et non archivee.
+    resource_url: str | None = None
 
 
 class LessonPublicRead(BaseModel):

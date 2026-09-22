@@ -7,10 +7,52 @@ from sqlalchemy.orm import Session
 from app.models.axis import Axis
 from app.models.enums import ValidationStatus
 from app.models.lesson import Lesson
+from app.models.resource import Resource
 from app.models.subject import Subject
 from app.models.term import Term
 from app.models.unit import Unit
 from app.schemas.content import AxisCreate, AxisUpdate
+from app.services.storage import get_storage_service
+
+
+def _with_resolved_resource_urls(db: Session, lesson: Lesson) -> Lesson:
+    """Ajoute resource_url (calcule, jamais stocke) a chaque entree de
+    content_sections portant un resource_id qui pointe vers une Resource
+    non archivee. Mutation en memoire uniquement (aucun flush/commit) : ne
+    modifie jamais ce qui est persiste en base."""
+    if not lesson.content_sections:
+        return lesson
+
+    resource_ids = {
+        section["resource_id"]
+        for section in lesson.content_sections
+        if section.get("resource_id")
+    }
+    if not resource_ids:
+        return lesson
+
+    resources_by_id = {
+        str(resource.id): resource
+        for resource in db.scalars(
+            select(Resource).where(
+                Resource.id.in_([uuid.UUID(rid) for rid in resource_ids]),
+                Resource.status != ValidationStatus.ARCHIVED,
+            )
+        )
+    }
+    if not resources_by_id:
+        return lesson
+
+    storage = get_storage_service()
+    resolved_sections = []
+    for section in lesson.content_sections:
+        section = dict(section)
+        resource = resources_by_id.get(section.get("resource_id"))
+        if resource is not None and resource.file_ref:
+            section["resource_url"] = storage.get_url(resource.file_ref)
+        resolved_sections.append(section)
+    lesson.content_sections = resolved_sections
+    return lesson
 
 
 def list_published_lessons(
@@ -72,7 +114,7 @@ def get_lesson_or_404(db: Session, lesson_id: uuid.UUID) -> Lesson:
     lesson = db.get(Lesson, lesson_id)
     if lesson is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Leçon introuvable")
-    return lesson
+    return _with_resolved_resource_urls(db, lesson)
 
 
 def get_published_lesson_or_404(db: Session, lesson_id: uuid.UUID) -> Lesson:
@@ -82,7 +124,7 @@ def get_published_lesson_or_404(db: Session, lesson_id: uuid.UUID) -> Lesson:
     lesson = db.get(Lesson, lesson_id)
     if lesson is None or lesson.status != ValidationStatus.PUBLISHED:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Leçon introuvable")
-    return lesson
+    return _with_resolved_resource_urls(db, lesson)
 
 
 # --- Axis : seul niveau de la hierarchie de contenu avec ecriture admin ----

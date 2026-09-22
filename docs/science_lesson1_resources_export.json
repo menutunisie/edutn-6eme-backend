@@ -1,0 +1,110 @@
+{
+  "id": "dfe3794b-6950-52e5-8fd2-c6fe0fce0f45",
+  "unit_id": "2296c9b1-a516-56b4-9305-bf1e09d8426c",
+  "axis_id": "9b2fb734-d715-5998-b898-4f9df5ba0f87",
+  "week_id": null,
+  "title_fr": null,
+  "title_ar": "تركيبة العين",
+  "status": "a_verifier",
+  "visibility": "PUBLIC",
+  "display_order": 1,
+  "description_short": "Contenu basé sur le manuel officiel d'éveil scientifique 6e année (édition 2021), pages 7 à 9. Schémas non numérisés — voir media_note de chaque section.",
+  "content_sections": [
+    {
+      "order": 1,
+      "phase_key": "mobilisation_acquis",
+      "title_ar": "أتعهّد مكتسباتي السّابقة",
+      "title_fr": null,
+      "body_ar": "ماذا ترى من العين؟ تحسّس موقع العين. ماذا يوفّر هذا الموقع؟",
+      "body_fr": null,
+      "media_note": "Illustration : dessin d'un crâne humain (رسم جمجمة إنسان), page 7.",
+      "exercices_non_transcrits": null,
+      "resource_id": "fdf9be9e-3b55-5bb9-94f2-e3495a486952",
+      "resource_url": "http://127.0.0.1:8011/media/lessons/dfe3794b-6950-52e5-8fd2-c6fe0fce0f45/phase1-p7.png"
+    },
+    {
+      "order": 2,
+      "phase_key": "observation",
+      "title_ar": "ألاحظ وأتساءل",
+      "title_fr": null,
+      "body_ar": "انظر إلى عينيّ في المرآة فأتبيّن أنّها تتكوّن من أعضاء، أذكرها. هل تتكوّن العين من هذه الأعضاء فقط؟",
+      "body_fr": null,
+      "media_note": null,
+      "exercices_non_transcrits": null,
+      "resource_id": null,
+      "resource_url": null
+    },
+    {
+      "order": 3,
+      "phase_key": "hypothese",
+      "title_ar": "أفترض",
+      "title_fr": null,
+      "body_ar": "تتكوّن العين من الأجزاء الظّاهرة فقط. تضمّ العين أجزاء داخليّة غير ظاهرة.",
+      "body_fr": null,
+      "media_note": null,
+      "exercices_non_transcrits": null,
+      "resource_id": null,
+      "resource_url": null
+    },
+    {
+      "order": 4,
+      "phase_key": "experimentation",
+      "title_ar": "أجرّب وأثبت",
+      "title_fr": null,
+      "body_ar": "أتعرّف إلى المكوّنات الدّاخليّة للعين مستعينا بالرّسم التّالي.",
+      "body_fr": null,
+      "media_note": "Schéma en coupe de l'œil (القبّعة الأماميّة / القبّعة الخلفيّة), légendé : القرنيّة، المشيميّة، القزحيّة، العدسة (الجسم البلّوري) à l'avant ; القرنيّة، المشيميّة، الشّبكيّة، العصب البصري à l'arrière. Page 8.",
+      "exercices_non_transcrits": null,
+      "resource_id": "ca95c6f8-46ae-5121-ba00-cd6e13698e95",
+      "resource_url": "http://127.0.0.1:8011/media/lessons/dfe3794b-6950-52e5-8fd2-c6fe0fce0f45/phase4-p8.png"
+    },
+    {
+      "order": 5,
+      "phase_key": "conclusion",
+      "title_ar": "أستنتج",
+      "title_fr": null,
+      "body_ar": "تصنيف: الأعضاء الواقية للعين (الجفنان، الحاجبان، القرنيّة...)، الأعضاء الدّاخليّة، الأعضاء الخارجيّة. يوجد تجويفان في العين: تجويف أمامي به جسم مرن شفّاف في شكل عدسة (الجسم البلّوري)، وتجويف خلفي يوجد به سائل شفّاف يسمّى الخلط الزّجاجي.",
+      "body_fr": null,
+      "media_note": "Tableau de classification à 3 colonnes (tركيبة العين / الأعضاء الدّاخليّة / الأعضاء الخارجيّة / الأعضاء الواقية للعين), page 8.",
+      "exercices_non_transcrits": null,
+      "resource_id": "4e67917f-0738-5248-bab2-d8c7649e1154",
+      "resource_url": "http://127.0.0.1:8011/media/lessons/dfe3794b-6950-52e5-8fd2-c6fe0fce0f45/phase5-p8.png"
+    },
+    {
+      "order": 6,
+      "phase_key": "application",
+      "title_ar": "أطبّق وأوظّف",
+      "title_fr": null,
+      "body_ar": "أ- أجيب شفويّا (نصوص إلى إتمامها حول الأعضاء الواقية وتركيبة العين). ب- أسمّي الأعضاء المشار إليها بسهام في الرّسم.",
+      "body_fr": null,
+      "media_note": "Schéma en coupe avant-arrière de l'œil à légender (مقطع أمامي خلفي للعين), page 9.",
+      "exercices_non_transcrits": null,
+      "resource_id": "6a396740-c2f0-5b2a-b620-e9a29aeebd1f",
+      "resource_url": "http://127.0.0.1:8011/media/lessons/dfe3794b-6950-52e5-8fd2-c6fe0fce0f45/phase6-p9.png"
+    },
+    {
+      "order": 7,
+      "phase_key": "evaluation",
+      "title_ar": "أقيّم تعلّمي الجديد",
+      "title_fr": null,
+      "body_ar": "دخلت الأمّ صحبة ابنها أحمد إلى طبيب العيون... تصوّر نفسي مكان أحمد وأقدّم معلومات للأمّ حول تركيبة العين وأدوّنها على كرّاس الإيقاظ العلمي.",
+      "body_fr": null,
+      "media_note": null,
+      "exercices_non_transcrits": null,
+      "resource_id": null,
+      "resource_url": null
+    },
+    {
+      "order": 8,
+      "phase_key": "vocabulaire",
+      "title_ar": "معجمي في العلوم",
+      "title_fr": null,
+      "body_ar": "ألغاز: أنا في حركة مستمرّة لحماية العين من كلّ أذى، من أنا؟ / أنا الغرفة المظلمة في العين، من أنا؟ / يختلف لوني من شخص لآخر (سوداء، زرقاء، عسليّة...)، من أنا؟",
+      "body_fr": null,
+      "media_note": null,
+      "exercices_non_transcrits": null,
+      "resource_id": null,
+      "resource_url": null
+    }
+  ]
+}

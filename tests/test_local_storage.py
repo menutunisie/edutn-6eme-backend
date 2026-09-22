@@ -9,7 +9,7 @@ from app.models.resource import Resource
 from app.models.resource_type import ResourceType
 from app.services.local_storage import LocalFileStorageService, build_lesson_media_path
 from app.services.storage import get_storage_service
-from tests.test_lesson_detail import _seed_lesson
+from tests.test_lesson_detail import _admin_headers, _seed_lesson
 
 BASE_URL = "http://testserver"
 CONTENT = b"\x89PNG-fake-schema-bytes"
@@ -105,6 +105,66 @@ def test_media_route_rejects_invalid_filename(client, storage):
     lesson = _seed_lesson(status=ValidationStatus.TO_REVIEW, content_sections=None)
     for bad_name in [".hidden", "..%2Fsecret", "a%5Cb.png"]:
         assert client.get(f"/media/lessons/{lesson.id}/{bad_name}").status_code == 404
+
+
+def test_lesson_detail_resolves_resource_id_to_resource_url(client):
+    """Couvre le pipeline d'import de schemas : une entree de
+    content_sections portant resource_id doit se voir ajouter, a la
+    lecture, un resource_url pointant vers /media/lessons/{lesson_id}/
+    {filename} -- calcule par content_repository, jamais stocke en base."""
+    lesson = _seed_lesson(
+        status=ValidationStatus.PUBLISHED,
+        content_sections=[
+            {
+                "order": 1,
+                "phase_key": "mobilisation_acquis",
+                "title_ar": "أتعهّد",
+                "title_fr": None,
+                "body_ar": "نص",
+                "body_fr": None,
+                "media_note": "Légende.",
+            }
+        ],
+    )
+    resource_type_id = None
+    db = SessionLocal()
+    try:
+        resource_type = ResourceType(code=f"TYPE_{uuid.uuid4().hex[:8]}", name_fr="Type", name_ar="نوع")
+        db.add(resource_type)
+        db.flush()
+        resource_type_id = resource_type.id
+        resource = Resource(
+            lesson_id=lesson.id,
+            resource_type_id=resource_type_id,
+            status=ValidationStatus.TO_REVIEW,
+            file_ref=build_lesson_media_path(lesson.id, "diagram.png"),
+        )
+        db.add(resource)
+        db.commit()
+        db.refresh(resource)
+        resource_id = resource.id
+    finally:
+        db.close()
+
+    db = SessionLocal()
+    try:
+        db_lesson = db.get(type(lesson), lesson.id)
+        sections = list(db_lesson.content_sections)
+        sections[0] = {**sections[0], "resource_id": str(resource_id)}
+        db_lesson.content_sections = sections
+        db.commit()
+    finally:
+        db.close()
+
+    headers = _admin_headers(client)
+    body = client.get(f"/admin/lessons/{lesson.id}", headers=headers).json()
+    resource_url = body["content_sections"][0]["resource_url"]
+    assert resource_url is not None
+    assert resource_url.endswith(f"/media/lessons/{lesson.id}/diagram.png")
+    assert body["content_sections"][0]["media_note"] == "Légende."
+
+    public_body = client.get(f"/public/lessons/{lesson.id}").json()
+    assert public_body["content_sections"][0]["resource_url"] == resource_url
 
 
 def test_factory_returns_local_service_by_default():

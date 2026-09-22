@@ -588,3 +588,43 @@ def test_third_science_lesson_nine_sections_including_extension_phase(client):
     ]
     with_media = [s["order"] for s in body["content_sections"] if s["media_note"]]
     assert with_media == [1, 4, 6, 7]
+
+
+def test_content_section_resource_id_is_exposed_admin_and_public(client):
+    """Couvre le pipeline d'import de schemas (leçon pilote تركيبة العين) :
+    resource_id, une fois ajoute a une entree de content_sections, doit
+    transiter tel quel dans la reponse API (admin et public) et coexister
+    avec media_note (legende) sans l'ecraser -- reproduit un bug reel ou
+    resource_id etait silencieusement supprime, absent du schema Pydantic
+    LessonContentSection (extra="ignore" par defaut)."""
+    sections = [
+        {
+            "order": 1,
+            "phase_key": "mobilisation_acquis",
+            "title_ar": "أتعهّد",
+            "title_fr": None,
+            "body_ar": "نص",
+            "body_fr": None,
+            "media_note": "Légende de l'image.",
+            "resource_id": "11111111-1111-1111-1111-111111111111",
+        },
+        {
+            "order": 2,
+            "phase_key": "observation",
+            "title_ar": "ألاحظ",
+            "title_fr": None,
+            "body_ar": "نص",
+            "body_fr": None,
+            "media_note": None,
+        },
+    ]
+    lesson = _seed_lesson(status=ValidationStatus.PUBLISHED, content_sections=sections)
+    headers = _admin_headers(client)
+
+    admin_body = client.get(f"/admin/lessons/{lesson.id}", headers=headers).json()
+    assert admin_body["content_sections"][0]["resource_id"] == "11111111-1111-1111-1111-111111111111"
+    assert admin_body["content_sections"][0]["media_note"] == "Légende de l'image."
+    assert admin_body["content_sections"][1]["resource_id"] is None
+
+    public_body = client.get(f"/public/lessons/{lesson.id}").json()
+    assert public_body["content_sections"][0]["resource_id"] == "11111111-1111-1111-1111-111111111111"
