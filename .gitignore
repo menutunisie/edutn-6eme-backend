@@ -19,3 +19,10 @@ env/
 # Fichiers uploades en local (jamais commites) ; .gitkeep garde le dossier
 storage/*
 !storage/.gitkeep
+
+# Images sources du pipeline d'import de schemas (jamais commitees, gardees
+# en place localement comme historique des imports deja effectues).
+imports/
+# Idem : dossier cree par erreur de frappe ("impotrs") a la place d'imports/,
+# garde tel quel (contient de vraies images) mais jamais commite non plus.
+impotrs/
